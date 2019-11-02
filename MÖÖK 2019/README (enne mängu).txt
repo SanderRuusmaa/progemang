@@ -13,9 +13,11 @@ M鋘g t鲻tab bash shellis. Windows OS arvutiga on vaja l鋌ida j鋜gnevad sammud, e
 
 -Et saada M种K 2019 juurde ja k鋓vitada m鋘g (kui see asub teie Desktopil), (Pu餶in: kui asub Documents folderis):
 	kui DESKTOPIL
-	-cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/desktop/"M种K 2019"
-	-python3 m鲻k.py
+	- cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/desktop/"M种K 2019"
+	- python3 m鲻k.py
 
 	kui GitHubi folderis
-	-cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/documents/github/progemang/"M种K 2019"
-	-python3 m鲻k.py
+	- cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/documents/github/progemang/"M种K 2019"
+	- python3 m鲻k.py
+
+	ET COPY PASTEIDA SIIT BASH TERMINALI, selectid k鋝u, CTRL+C ja bashis vajutad paremat hiire kl鮬su
