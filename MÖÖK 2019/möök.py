@@ -15,21 +15,6 @@ class player_inf():
         self.hp = 0
 player = player_inf()
 
-
-#### Tiitellehe valikud ####
-def tiitellehe_valikud():
-    valik = input(">>> ")
-    if valik.lower() == "mängi":
-        start_game()
-    elif valik.lower() == "abi":
-        help_menu()
-    elif valik.lower() == "quit":
-        sys.exit()
-    while valik.lower() not in ["mängi", "abi", "quit"]:
-        print("Palun sisestage tuntud käsk!")
-        tiitellehe_valikd()
-        
-        
 #### Tiitelleht ####
 def tiitelleht():
     os.system("clear")
@@ -39,8 +24,60 @@ def tiitelleht():
     print("         + Mängi +         ")
     print("         ? Abi   ?         ")
     print("         - Quit  -         ")
+    print("===========================")
     print("     -- rushkin 2019 --    ")
     print("===========================")
+
+
+#### Tiitellehe valikud ####
+def tiitellehe_valikud():
+    valik = input(">>> ")
+    if valik.lower() == "mängi":
+        os.system("clear")
+        start_game()
+    elif valik.lower() == "abi":
+        os.system("clear")
+        help_menu()
+    elif valik.lower() == "quit":
+        os.system("clear")
+        time.sleep(0.5)
+        for el in "Nägemiseni! :)":
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        time.sleep(1)
+        os.system("clear")
+        sys.exit()
+    while valik.lower() not in ["mängi", "abi", "quit"]:
+        print("Palun sisestage tuntud käsk!")
+        tiitellehe_valikd()
+        
+#### Help Menu ####
+def help_menu():
+    print("===========================")
+    print("=          ABI            =")
+    print("===========================")
+    print("Võitlused:                 ")
+    print("Navigeerimine:             ")
+    print("                           ")
+    print("kirjuta 'tagasi', et naasta")
+    print("tagasi peamenüüsse.        ")
+    print("===========================")
+    sys.stdout.flush()
+    
+    käsk = input(">>> ")
+    
+    if käsk.lower() == "tagasi":
+        tiitelleht()
+        tiitellehe_valikud()
+    else:
+        for el in "Tundmatu käsk, proovime uuesti...":
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.05)
+        print("\n")
+        os.system("clear")
+        help_menu()
 
 def setup_game():
     os.system("clear")
@@ -69,4 +106,9 @@ def display_the_logo():
         time.sleep(0.2)
     time.sleep(5)
     
+### Mängu intro + menüü ###
 display_the_logo()
+
+while player.mängu_staatus == False:
+    tiitelleht()
+    tiitellehe_valikud()
