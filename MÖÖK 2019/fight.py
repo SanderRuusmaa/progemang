@@ -1,5 +1,7 @@
 from random import randint
 from time import sleep
+import sys
+import time
 
 class player_inf():
     def __init__(self):
@@ -9,11 +11,12 @@ class player_inf():
 player = player_inf()
 
 class koll_inf():
-    nimi = "Koll" 
-    nimiOm = "Kolli"
-    NimiOs = "Kolli"
-    hp = 100
-    dmg = 10
+    def __init__(self):
+        self.nimi = "Koll" 
+        self.nimiOm = "Kolli"
+        self.NimiOs = "Kolli"
+        self.hp = 100
+        self.dmg = 10
 
 class mõõk_inf():
     dmg = 5
@@ -79,18 +82,58 @@ def fight(koll):
             print("\nKalevipojal õnnestus "+ koll.nimiOm + " rusikahoobi eest kõrvale põigelda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
 
     #Fighti lõpp
-    if player.hp <= 0:
-        print("Vapper Kalevipoeg kukub väsinult põlvili maha...")
-        sleep(3)
-        print(koll.nimi + " haarab Kalevipoja peast kinni ning rebib selle otsast")
-        sleep(3)
-        print("Kalevipoeg sai lüüa.")
-    elif koll.hp <= 0:
-        print(koll.nimi + " kukub korisedes sellili...")
-        sleep(3)
-        print("Kalevipoeg võtab mõõgast kahe käega kinni ning lööb selle lapiti " + nimi.kollOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks.")
-        sleep(3)
-        print(koll.nimi + " sai lüüa.")
+    if 2 <= 0:
+        lõpp1 = "Vapper Kalevipoeg kukub väsinult põlvili maha"
+        for el in lõpp1:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        for el in [".",".","."]:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.8)
+        print("\n")
+        lõpp2 = koll.nimi + " haarab Kalevipoja peast kinni ning rebib selle otsast"
+        for el in lõpp2:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        for el in [".",".","."]:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.8)
+        print("\n")
+        lõpp3 = "Kalevipoeg sai lüüa."
+        for el in lõpp3:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+    elif 0 <= 0:
+        lõpp1_1 = koll.nimi + " kukub korisedes sellili"
+        for el in lõpp1_1:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        for el in [".",".","."]:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.8)
+        print("\n")
+        lõpp2_1 = "Kalevipoeg võtab mõõgast kahe käega kinni ning lööb selle lapiti " + koll.nimiOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks."
+        for el in lõpp2_1:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.05)
+        for el in [".",".","."]:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.8)
+        print("\n")
+        lõpp3_1 = koll.nimi + " sai lüüa."
+        for el in lõpp3_1:
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
 
 
 fight(koll)
