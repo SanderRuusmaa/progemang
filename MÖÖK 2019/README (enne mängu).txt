@@ -13,10 +13,12 @@ Mäng töötab bash shellis. Windows OS arvutiga on vaja läbida järgnevad sammud, e
 
 -Et saada MÖÖK 2019 juurde ja käivitada mäng (kui see asub teie Desktopil), (Puðkin: kui asub Documents folderis):
 	kui DESKTOPIL
+	- cd /
 	- cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/desktop/"MÖÖK 2019"
 	- python3 möök.py
 
 	kui GitHubi folderis
+	- cd /
 	- cd /mnt/c/users/"SINU WINDOWSI KASUTAJANIMI"/documents/github/progemang/"MÖÖK 2019"
 	- python3 möök.py
 
