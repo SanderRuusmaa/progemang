@@ -21,3 +21,9 @@ Mäng töötab bash shellis. Windows OS arvutiga on vaja läbida järgnevad sammud, e
 	- python3 möök.py
 
 	ET COPY PASTEIDA SIIT BASH TERMINALI, selectid käsu, CTRL+C ja bashis vajutad paremat hiire klõpsu
+
+
+Et macOS-il tššle saada:
+	-ava terminal ja installi python3 jŠrgnevate commadidega
+	- /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	- brew install python3
