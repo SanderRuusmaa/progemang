@@ -105,10 +105,58 @@ def display_the_logo():
         sys.stdout.flush()
         time.sleep(0.2)
     time.sleep(5)
-    
-### Mängu intro + menüü ###
-display_the_logo()
 
+### Mängu interaktiivsus ###
+def käsk():
+    print("\n" + "()===()===()===()===()===()===()===()")
+    for el in "Mis on sinu järgmine tegevus?":
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    tegevus = input("\n> ")
+    aktsepteeritud = ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra","keera", "patseeri", "flaneeri", "quit", "exit game"]
+    while tegevus.lower() not in aktsepteeritud:
+        for el in "Tundmatu käsk, proovime uuesti!.\n":
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.05)
+    if tegevus.lower() in ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra", "keera", "patseeri", "flaneeri"]:
+        player_movement()
+    elif tegevus.lower() in ["quit", "exit game"]:
+        sys.exit()
+        
+def player_movement():
+    for el in "Kuhu sa minna soovid?\n":
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    siht = input("> ")
+
+    
+### Mängu intro ###
+#Nime küsimine jms
+def setup_game():
+    os.system("clear")
+    for el in "Tervist, kes sa selline oled? Mis rüütlil nimeks on, kui küsida tohib?":
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.05)
+    nimeks = input("\n> ")
+    player.nimi = nimeks
+    tervitus = player.nimi + "....."
+    for el in tervitus:
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.25)
+    for el in "Milline meeldiv nimi. Tere tulemast mängu!":
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.05)
+        
+
+#display_the_logo()
+    
+"""
 while player.mängu_staatus == False:
     tiitelleht()
-    tiitellehe_valikud()
+    tiitellehe_valikud()"""
