@@ -502,8 +502,14 @@ def fight(koll):
         oskused["Oskus võitluse käigus relva vahetada"][1] = False
         ############################
         
-        ##### valige relv #####
+        ##### valige relv ####
         if oskused["Oskus võitluse käigus relva vahetada"][1] == True:
+            animeeri("Sinu relvavalik: \n")
+            weapons = []
+            for weapon in relvad:
+                if relvad[weapon][1] == True:
+                    weapons.append(weapon)
+                    print("-",weapon)
             while True:
                 valik = input("\nValige relv: ")
                 if valik in relvad:
@@ -540,7 +546,8 @@ def fight(koll):
                 elif valik == "":
                     break
                 else:
-                    print("Valige relv nimekirjast: " + str(relvad.keys()).strip("dict_keys(").strip(")") + ".")
+                    print("==Tundmatu sisend!==")
+                    print("Siin on relvade nimekiri: " + str(relvad.keys()).strip("dict_keys(").strip(")") + "." + "\nKüll aga sina omad järgnevaid relvi: " + str(weapons))
             print("Teie relv on " + relv.nimi + ".")       
                     
         #### Löögitugevuse valimine ####            
