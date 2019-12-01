@@ -336,7 +336,7 @@ class oda_inf():
         self.miss = 15
         self.crit = 5
         self.supercrit = 1
-        self.type = "lõikav"
+        self.type = "suskav"
 
 class viskeoda_inf():
     def __init__(self):
