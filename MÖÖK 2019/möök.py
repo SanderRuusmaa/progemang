@@ -518,19 +518,17 @@ def shop():
 
 
 ###======================================================VÕITLUSE FUNKTSIOON===================================================
-koll = kummitus_inf()
+koll = poltergeist_inf()
 def fight(koll):
-    põgene = False
+    põgene = False #Kas õnnestus põgeneda
     while koll.hp > 0 and player.hp > 0:
         #Siin seame parameetrid uue tsükli jaoks õigetele väärtusetele
         deftxt = True #kas lõpus prinditakse default teksti
         dmg1 = 0
-        põgenemiskatse = False
+        põgenemiskatse = False #kas proovisime põgeneda
 
         ######testimiseks###########
-        relv = nuga_inf()
-        relvad["nui"][1] = True
-        oskused["Oskus võitluse käigus relva vahetada"][1] = False
+        relv = oda_inf()
         ############################
         
         ##### valige relv ####
@@ -584,35 +582,34 @@ def fight(koll):
 
         #### Löögitugevuse valimine ####        
         dmg_katse = 1000
-        while not relv.min_dmg<=dmg_katse<=relv.dmg:
-            try:
-                dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\": ")
-                if dmg_katse == "põgene":
-                    põgenemiskatse = True
-                    if oskused["Oskus alati võitlusest põgeneda"][1] == True:
-                        print("Oma meisterlikku põgenemisoskust kasutades oli Kalevipjal käkitegu " + koll.nimiOm + " eest plehku pista!")
-                        põgene = True
-                        dmg_katse = relv.min_dmg
-                        break
-                    elif randint(1,100) <= koll.escape:
-                        print("Kalevipojal õnnestus " + koll.nimiOm + " eest plehku pista!")
-                        põgene = True
-                        dmg_katse = relv.min_dmg
-                        break
-                    else:
-                        print("Oi ei! Põgenemiskatse nurjus!")
-                        dmg_katse = 0
-                        break
+        while not relv.min_dmg<=dmg_katse<=relv.dmg: 
+            dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\": ")
+            if dmg_katse == "põgene":
+                põgenemiskatse = True
+                if oskused["Oskus alati võitlusest põgeneda"][1] == True:
+                    print("Oma meisterlikku põgenemisoskust kasutades oli Kalevipjal käkitegu " + koll.nimiOm + " eest plehku pista!")
+                    põgene = True
+                    dmg_katse = relv.min_dmg
+                    break
+                elif randint(1,100) <= koll.escape:
+                    print("Kalevipojal õnnestus " + koll.nimiOm + " eest plehku pista!")
+                    põgene = True
+                    dmg_katse = relv.min_dmg
+                    break
                 else:
+                    print("Oi ei! Põgenemiskatse nurjus!")
+                    dmg_katse = 0
+                    break
+            else:
+                try:
                     dmg_katse = int(dmg_katse)
-            except:
-                pass
+                except:
+                    dmg_katse = 0
 
         if põgene == True:
             break
 
         print("\n")
-        dmg1 = 0
 
         #### Missimine ####
         #Siia võib veel panna erinevad read vastavalt sisestatud dmg_katse väärtusele
