@@ -82,7 +82,7 @@ class zombi_inf():
         self.dmg = 3
         self.weakness = "suskav"
         self.dodge = 3
-        self.auhind = 2
+        self.auhind = 5
 
 class draakon_inf():
     def __init__(self):
@@ -116,7 +116,7 @@ class rott_inf():
         self.dmg = 2
         self.weakness = "purustav"
         self.dodge = 25
-        self.auhind = 1
+        self.auhind = 3
 
 class hiidrott_inf():
     def __init__(self):
@@ -127,7 +127,7 @@ class hiidrott_inf():
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 20
-        self.auhind = 3
+        self.auhind = 5
 
 class hiigelrott_inf():
     def __init__(self):
