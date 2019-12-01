@@ -481,13 +481,13 @@ def fight(koll):
         ############################
         
         ##### valige relv ####
-        animeeri("Sinu relvavalik: \n")
-        weapons = []
-        for weapon in relvad:
-            if relvad[weapon][1] == True:
-                weapons.append(weapon)
-                print("-",weapon)
         if oskused["Oskus võitluse käigus relva vahetada"][1] == True:
+            animeeri("Sinu relvavalik: \n")
+            weapons = []
+            for weapon in relvad:
+                if relvad[weapon][1] == True:
+                    weapons.append(weapon)
+                    print("-",weapon)
             while True:
                 valik = input("\nValige relv: ")
                 if valik in relvad:
