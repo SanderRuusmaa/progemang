@@ -7,6 +7,7 @@ from time import sleep
 import random
 from random import randint
 import subprocess
+from math import floor, ceil
 
 ### teksti animeerimine ###
 def animeeri(tekst):
@@ -30,21 +31,21 @@ player = player_inf()
 
 class koll_inf():
     def __init__(self):
-        self.nimi = "Koll" 
-        self.nimiOm = "Kolli"
-        self.nimiOs = "Kolli"
+        self.nimi = "Sookoll" 
+        self.nimiOm = "Sookolli"
+        self.nimiOs = "Sookolli"
         self.hp = 100
         self.dmg = 10
         self.weakness = "lõikav"
         self.dodge = 20
-        self.auhind = 50
+        self.auhind = 35
 
 class hiidämblik_inf():
     def __init__(self):
         self.nimi = "Hiidämblik" 
         self.nimiOm = "Hiidämbliku"
         self.nimiOs = "Hiidämblikku"
-        self.hp = 20
+        self.hp = 30
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 15
@@ -56,7 +57,7 @@ class hiigelämblik_inf():
         self.nimiOm = "Hiigelämbliku"
         self.nimiOs = "Hiigelämblikku"
         self.hp = 60
-        self.dmg = 8
+        self.dmg = 9
         self.weakness = "lõikav"
         self.dodge = 4
         self.auhind = 25
@@ -66,18 +67,18 @@ class harpüia_inf():
         self.nimi = "Harpüia" 
         self.nimiOm = "Harpüia"
         self.nimiOs = "Harpüiat"
-        self.hp = 15
+        self.hp = 25
         self.dmg = 5
         self.weakness = "kaugrünnak"
         self.dodge = 35
-        self.auhind = 5
+        self.auhind = 8
 
 class zombi_inf():
     def __init__(self):
         self.nimi = "Zombi" 
         self.nimiOm = "Zombi"
         self.nimiOs = "Zombit"
-        self.hp = 10
+        self.hp = 15
         self.dmg = 3
         self.weakness = "suskav"
         self.dodge = 3
@@ -104,6 +105,7 @@ class vampiir_inf():
         self.weakness = "purustav"
         self.dodge = 25
         self.auhind = 10
+        ### Vampiir imeb omale tugeva hiti puhul 3 või 4 elu tagasi
 
 class rott_inf():
     def __init__(self):
@@ -115,6 +117,40 @@ class rott_inf():
         self.weakness = "purustav"
         self.dodge = 25
         self.auhind = 1
+
+class hiidrott_inf():
+    def __init__(self):
+        self.nimi = "Hiidrott" 
+        self.nimiOm = "Hiidroti"
+        self.nimiOs = "Hiidrotti"
+        self.hp = 15
+        self.dmg = 4
+        self.weakness = "purustav"
+        self.dodge = 20
+        self.auhind = 3
+
+class hiigelrott_inf():
+    def __init__(self):
+        self.nimi = "Hiigelrott" 
+        self.nimiOm = "Hiigelroti"
+        self.nimiOs = "Hiigelrotti"
+        self.hp = 35
+        self.dmg = 6
+        self.weakness = "purustav"
+        self.dodge = 13
+        self.auhind = 10
+
+class muumia_inf():
+    def __init__(self):
+        self.nimi = "Muumia" 
+        self.nimiOm = "Muumia"
+        self.nimiOs = "Muumiat"
+        self.hp = 50
+        self.dmg = 6
+        self.weakness = "suskav"
+        self.dodge = 10
+        self.auhind = 20
+        #Tappev aura: Iga käigu lõpus kaotab mängija ceil(10% alles olevatest eludest)
         
 ### RELVAD ###
 class mõõk_inf():
@@ -267,8 +303,9 @@ class viskeoda_inf():
         self.supercrit = 1
         self.type = "kaugrünnak"
 
-relv = nui_inf()
-koll = vampiir_inf()
+
+
+koll = hiigelrott_inf()
 #==============================================================POOD=================================================================
 ### Poe sisu ###
 relvad = {"mõõk":[10,False], #vastavalt (hind, omamine)
@@ -438,15 +475,15 @@ def fight(koll):
         dmg1 = 0
 
         ######testimiseks###########
-        relv = nui_inf()
+        relv = amb_inf()
         relvad["nui"][1] = True
-        oskused["Oskus võitluse käigus relva vahetada"][1] = True
+        oskused["Oskus võitluse käigus relva vahetada"][1] = False
         ############################
         
-        ##### valige relv ####
+        ##### valige relv #####
         if oskused["Oskus võitluse käigus relva vahetada"][1] == True:
             while True:
-                valik = input("Valige relv: ")
+                valik = input("\nValige relv: ")
                 if valik in relvad:
                     if relvad[valik][1] == True:
                         if valik == "vibu":
@@ -582,7 +619,7 @@ def fight(koll):
                     elif type(relv) == piits_inf:                
                         print(koll.nimi + " sai piitsa teelt kõrvale, nii et kuulda oli vaid tühja vihinat.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
 
-                elif type(koll) == zombi_inf:
+                elif type(koll) == zombi_inf or type(koll) == muumia_inf:
                     if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
                         print(koll.nimi + " tuias löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
                     elif type(relv) == oda_inf or type(relv) == nuga_inf:
@@ -592,7 +629,7 @@ def fight(koll):
                     elif type(relv) == vibu_inf or type(relv) == amb_inf:
                         print(koll.nimi + " suutis noole teelt eest tuigerdada.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
 
-                elif type(koll) == rott_inf:
+                elif type(koll) == rott_inf or type(koll) == hiidrott_inf or type(koll) == hiigelrott_inf:
                     if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
                         print(koll.nimi + " sibas löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
                     elif type(relv) == oda_inf or type(relv) == nuga_inf:
@@ -674,7 +711,7 @@ def fight(koll):
             else:
                 print("\nKalevipoeg kaotas hetkeks fookuse ja " + koll.nimiOm + " vahedad küüned lõikasid teda kõikjalt!" + koll.nimi + " sai isegi võimaluse oma oma kiskjahambad Kalevipoega lüüa. Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
-        elif type(koll) == zombi_inf:
+        elif type(koll) == zombi_inf or type(koll) == muumia_inf:
             if dmg2 == 0:
                 print("\nKalevipojal läks korda "+ koll.nimiOm + " kohmakate käte vahelt pääseda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
@@ -714,6 +751,15 @@ def fight(koll):
             else:
                 print("\n" + koll.nimiOm + "l õnnestus Kalevipoega mööda üles ronida ja oma küüniste ja hammastega kangelasele haiget teha! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
+        elif type(koll) == hiidrott_inf or type(koll) == hiigelrott_inf:
+            if dmg2 == 0:
+                print("\n"+ koll.nimiOm + " hambad näksasid tühja õhku!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+            elif 0 < dmg2 <= 0.5*koll.dmg:
+                print("\n" + koll.nimi + " hammustas Kalevipoega! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+            elif 0.5*koll.dmg < dmg2:
+                print("\n" + koll.nimi + " sai Kalevipoja väga kõvasti hambusse! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+
+
         if type(koll) == vampiir_inf and koll.hp > 0:
             if dmg2 > 0.5*koll.dmg:
                 koll.hp += round(0.75*dmg2)
@@ -722,6 +768,11 @@ def fight(koll):
                 sleep(0.75)
                 print("\n" + koll.nimi + " imes omale " + str(round(0.75*dmg2)) + " elupunkti tagasi.\n" + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.\n")
 
+        if type(koll) == muumia_inf and koll.hp > 0:
+            surmav_aura = ceil(player.hp*0.1)
+            player.hp -=surmav_aura
+            print("\nMuumia surmav aura põletab Kalevipoja sisemust. Kalevipoeg kaotab " + str(surmav_aura) + " elupunkti.\nKalevipojal on nüüd " + str(player.hp) + " elupunkti.")
+            
         
     #Fighti lõpp
     if player.hp <= 0:
@@ -751,6 +802,10 @@ def fight(koll):
             lõpp2 = koll.nimiOm + " küünis läbistab Kalevipoja ja võiduka möirgega teeb lohe Kalevipojast grillliha"
         elif type(koll) == rott_inf:
             lõpp2 = koll.nimiOm + " pisikesed küüned rebivad küljest Kalevipoja silmad ning varsti jõuavad hambad ka kägiveenini kaelas"
+        elif type(koll) == hiidrott_inf or type(koll) == hiigelrott_inf:
+            lõpp2 = koll.nimi + " närib ja küünistab Kalevipoega, kuni järele jääb ainult skelett ja punaseks värvunud maalapp"
+        elif type(koll) == muumia_inf:
+            lõpp2 = "Kangelane vajub surmava aura käes pikali. " + koll.nimi + " mähib Kalevipoja kaltsudesse ja varsti tõusebki uus " + koll.nimi + "."
                 
         for el in lõpp2:
             sys.stdout.write(el)
@@ -774,7 +829,7 @@ def fight(koll):
             lõpp1_1 = koll.nimiOm + " jalad tõmbuvad krõnksu ja " + koll.nimi + " kukub selili maha"
         elif type(koll) == harpüia_inf:
             lõpp1_1 = koll.nimiOm + " auklikud tiivad ei ole enam võimelised " + koll.nimiOs + " õhus hoidma. " + koll.nimi + " kukub kohmakalt maha"
-        elif type(koll) == zombi_inf:
+        elif type(koll) == zombi_inf or type(koll) == muumia_inf:
             lõpp1_1 = koll.nimi + " kukub kähisedes kõhuli"
         elif type(koll) == vampiir_inf:
             lõpp1_1 = koll.nimi + " vajub põlvili ja tema piirjooned hägunevad"
@@ -782,6 +837,8 @@ def fight(koll):
             lõpp1_1 = koll.nimi + " kukub maavärina saatel maha"
         elif type(koll) == rott_inf:
             lõpp1_1 = koll.nimi + " vajub niutsatusega kõhuli"
+        elif type(koll) == hiidrott_inf or type(koll) == hiigelrott_inf:
+            lõpp1_1 = koll.nimi + " vajub kähinaga kõhuli."
 
         for el in lõpp1_1:
             sys.stdout.write(el)
@@ -793,7 +850,7 @@ def fight(koll):
             time.sleep(0.8)
         print("\n")
 
-        if type(koll) == koll_inf or type(koll) == harpüia_inf or type(koll) == zombi_inf:
+        if type(koll) == koll_inf or type(koll) == harpüia_inf or type(koll) == zombi_inf or type(koll) == muumia_inf:
             if type(relv) == mõõk_inf or type(relv) == vikat_inf:
                 lõpp2_1 = "Kalevipoeg võtab " + relv.nimiOm + "st kahe käega kinni ning lööb selle lapiti " + koll.nimiOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks."
             elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
@@ -846,7 +903,19 @@ def fight(koll):
                 lõpp2_1 = "Kalevipoeg suskab " +relv.nimiOs + " läbi " + koll.nimiOm + "silmaavade ja avastab, et relva otsa külge jäävad teemantid."
 
         elif type(koll) == rott_inf:
-            lõpp2_2 = "Kalevipoeg astub jalaga " + koll.nimiOs + " lödiks."
+            lõpp2_1 = "Kalevipoeg astub jalaga " + koll.nimiOs + " lödiks."
+
+        elif type(koll) == hiidrott_inf or type(koll) == hiigelrott_inf:
+            if type(relv) == mõõk_inf:
+                lõpp2_1 = "Kalevipoeg raiub " + relv.nimiOm + "ga " + koll.nimiOm + " pea otsast."
+            elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
+                lõpp2_1 = "Kalevipoeg lömastab " + relv.nimiOm + "ga " + koll.nimiOm + " pea."
+            elif type(relv) == piits_inf:
+                lõpp2_1 = "Kalevipoeg lööb " + relv.nimiOm + "ga " + koll.nimi + " ribadeks."
+            elif type(relv) == amb_inf or type(relv) == vibu_inf:
+                lõpp2_1 = relv.nimiOm + "nool läbistab " + koll.nimiOm + " kolju."
+            elif type(relv) == oda_inf or type(relv) == viskeoda_inf or type(relv) == nuga_inf:
+                lõpp2_1 = relv.nimiOm + "hoop purustab " + koll.nimiOm + " pea."
 
         for el in lõpp2_1:
             sys.stdout.write(el)
@@ -862,6 +931,8 @@ def fight(koll):
             sys.stdout.write(el)
             sys.stdout.flush()
             time.sleep(0.1)
+
+        print("\n Kalevipeg leidis surnukehalt " + str(koll.auhind) + " kuldmünti.")
 
 #========================================================MÄNGU SELGROOG============================================================
 
