@@ -187,7 +187,13 @@ class poltergeist_inf():
         self.escape = 45
         self.auhind = 25
         
-### RELVAD ###
+
+rotid = [rott_inf(), hiidrott_inf()]
+nõrgmead_kollid = [rott_inf(), hiidrott_inf(), kummitus_inf(), zombi_inf(), hiidämblik_inf(), harpüia_inf()]
+tugevad_kollid = [poltergeist_inf(), muumia_inf(), hiigelrott_inf(), vampiir_inf(), hiigelämblik_inf(), koll_inf()]
+boss = draakon_inf()
+
+### =============================RELVAD========================== ###
 class rusikad_inf():
     def __init__(self):
         self.Nimi = "Rusikad"
@@ -354,7 +360,6 @@ class viskeoda_inf():
         self.type = "kaugrünnak"
 
 
-
 #==============================================================POOD=================================================================
 ### Poe sisu ###
 relvad = {"mõõk":[10,False], #vastavalt (hind, omamine)
@@ -402,7 +407,7 @@ def shop():
         valik = input("Mida soovite osta? Kui relvi, siis kirjutage \"relvad\", kui rüüsid, kirjutage \"rüüd\", kui võlujooke, kirjutage \"võlujoogid\", kui oskuseid, kirjutage \"oskused\", kui soovite poest lahkuda, kirjutage \"lahku\": ")
         sleep(0.5)
         if valik == "relvad":
-            animeeri("\nAh et soovite meie kvaliteetseid relvi vaadata! Siin on meie valik:")
+            animeeri("\nAh et soovite meie kvaliteetseid relvi vaadata! Siin on meie valik:\n")
             for k in relvad:
                 print(k + ": " + str(relvad[k][0]))
             valik2 = input("Sisestage, mida soovite osta või \"tagasi\", kui soovite tagasi pöörduda: ")
@@ -924,6 +929,7 @@ def fight(koll):
             sys.stdout.write(el)
             sys.stdout.flush()
             time.sleep(0.1)
+        player.mängu_staatus = True
 
     elif koll.hp <= 0:
         if type(koll) == koll_inf:
@@ -1134,7 +1140,15 @@ def display_the_logo():
     time.sleep(5)
 
 ### Mängu interaktiivsus ###
+move_counter = -1
+läände = 0
+itta = 0
+põhja = 0
+lõunasse = 0
+quicktravel = False
+
 def käsk():
+    global quicktravel
     print("\n" + "()===()===()===()===()===()===()===()")
     for el in "Mis on sinu järgmine tegevus?":
         sys.stdout.write(el)
@@ -1142,13 +1156,14 @@ def käsk():
         time.sleep(0.05)
     tegevus = input("\n> ")
     aktsepteeritud = ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra","keera", "patseeri", "flaneeri", "quit", "exit game"]
+    if tegevus.lower() not in aktsepteeritud:
+        animeeri("Tundmatu käsk, proovime uuesti...")
     while tegevus.lower() not in aktsepteeritud:
-        for el in "Tundmatu käsk, proovime uuesti!.\n":
-            sys.stdout.write(el)
-            sys.stdout.flush()
-            time.sleep(0.05)
         käsk()
     if tegevus.lower() in ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra", "keera", "patseeri", "flaneeri"]:
+        player_movement()
+    elif tegevus.lower() == "quicktravel":
+        quicktravel = True
         player_movement()
     elif tegevus.lower() in ["quit", "exit game"]:
         os.system("clear")
@@ -1157,17 +1172,45 @@ def käsk():
         sys.exit()
         
 def player_movement():
-    animeeri("Kuhu sa minna soovid?\n")
+    global itta
+    global läände
+    global põhja
+    global lõunasse
+    global quicktravel
+    #QUICK TRAVEL POOLELI
+    if quicktravel == True:
+        animeeri("Kuhu sa kiiresti liikuda sooviksid? (Sisesta tsooni nimi)")
+        siht = input("> ")
+        ###....
+        quicktravel = False
+    animeeri("Kuhu sa minna soovid? (läände, itta, põhja, lõunasse, poodi)\n")
     siht = input("> ")
     if siht.lower() == "poodi":
         shop()
-
+    elif siht.lower() == "läände":
+        läände += 1
+        animeeri("Liikusid suunaga läände.")
+        liikumine()
+    elif siht.lower() == "itta":
+        itta += 1
+        animeeri("Liikusid itta.")
+        liikumine()
+    elif siht.lower() == "põhja":
+        põhja += 1
+        animeeri("Jalutasid põhja suunas.")
+        liikumine()
+    elif siht. lower() == "lõunasse":
+        lõunasse += 1
+        animeeri("Patseerisid lõuna suunas.")
+        liikumine()
+    else:
+        animeeri("Tundmatu käsk, proovime uuesti...")
     
 ### Mängu intro ###
 #Nime küsimine jms
 def setup_game():
     os.system("clear")
-    for el in "Tervist, kes sa selline oled? Mis rüütlil nimeks on, kui küsida tohib?":
+    for el in "Tervist, kes sa selline oled? Mis sul nimeks on, kui küsida tohib?":
         sys.stdout.write(el)
         sys.stdout.flush()
         time.sleep(0.05)
@@ -1196,6 +1239,8 @@ def setup_game():
     time.sleep(3)
     animeeri("Taskutes sobrades märkad, et sul on " + str(player.gold) + " kuldmünti.\n")
     time.sleep(2)
+    animeeri("Mõõga peegeldusest märkad, et sa oled muistne eesti kangelane, Kalevipoeg.")
+    time.sleep(1.5)
     animeeri("Sul on alati teada, et kohalik poeomanik, rüü- ning relvameister Otto äritseb Karuküüne külas.\nTeda saad sa alati külastada, kui sa just parasjagu võitlemisega hõivatud ei ole. Kirjutades käsk 'mine', 'liigu' vms ning siis 'poodi' saad sa Ottot külastada.\n")
     time.sleep(1)
     animeeri("...\n")
@@ -1210,16 +1255,65 @@ def setup_game():
     time.sleep(2)
     animeeri("Kui see ka ei aita ning koll sind maha lööb, lahkud sa siit maailmast ning naased oma kodumaailma tagasi...\n")
     time.sleep(2)
-    animeeri("Aitab monoloogist. Alaku sinu retk meie maailmas!\n")
+    animeeri("Aitab monoloogist. Alaku sinu retk meie maailmas! Kivi kotti, Kalevipoeg.\n")
     time.sleep(2)
     käsk()
-        
+###MÄNGU KAART###
+#Teen lineaarse kaardi, lihtsalt counteriga vaatan, et kui sa oled liikunud mingi arv kordi ühes suunas, siis tuleb järgmine tsoon
+asukohad = ["Näriliste põld", "Surnumets", "Kolliväli", "Printsessi torn"]
+kaart = {
+    asukohad[0]: False, #näriliste põld
+    asukohad[1]: False, #surnumets
+    asukohad[2]: False, #kolliväli
+    asukohad[3]: False, #printsessi torn
+    }
 
+def liikumine():
+    global move_counter
+    global läände
+    global itta
+    global põhja
+    global lõunasse
+    if abs(läände - itta) > 4:
+        animeeri("\nSa jõudsid kohta, nimega " + asukohad[move_counter])
+        move_counter += 1
+        kaart[asukohad[move_counter]] = True
+        läände, itta, põhja, lõunasse = 0, 0, 0, 0
+    elif abs(põhja - lõunasse) > 4:
+        animeeri("\nSa jõudsid kohta, nimega " + asukohad[move_counter])
+        move_counter += 1
+        kaart[asukohad[move_counter]] = True
+        läände, itta, põhja, lõunasse = 0, 0, 0, 0
+        
+def kolli_rünne():
+    if asukohad[move_counter] == "Näriliste põld":
+        chance = randint(1, 11)
+        if chance <= 7:
+            animeeri("Ah sa mait, sinu teele kargas " + rotid[0].nimi + "...\nAlgab vägev võitlus.")
+            fight(rotid[0])
+        else:
+            animeeri("Ah sa mait, sinu teele kargas " + rotid[1].nimi + "...\nAlgab vägev võitlus.")
+            fight(rotid[1])
+    
 #display_the_logo()
 """    
 tiitelleht()
 tiitellehe_valikud()
 käsk()
 """
+move_counter = 0
+kolli_rünne()
 
-fight(koll)
+#fight(koll)
+"""while player.mängu_staatus == False:
+    käsk()
+    
+if player.mängu_staatus == True:
+        os.system("clear")
+        time.sleep(1)
+        display_the_logo()
+        for el in "\n\nMäng sai läbi.":
+            sys.stdout.write(el)
+            sys.stdout.flush()
+            time.sleep(0.1)
+        sys.exit()"""
