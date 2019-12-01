@@ -151,6 +151,28 @@ class muumia_inf():
         self.dodge = 10
         self.auhind = 20
         #Tappev aura: Iga käigu lõpus kaotab mängija ceil(10% alles olevatest eludest)
+
+class kummitus_inf():
+    def __init__(self):
+        self.nimi = "Kummitus" 
+        self.nimiOm = "Kummituse"
+        self.nimiOs = "Kummitust"
+        self.hp = 20
+        self.dmg = 4
+        self.weakness = "suskav"
+        self.dodge = 50
+        self.auhind = 8
+
+class poltergeist_inf():
+    def __init__(self):
+        self.nimi = "Poltergeist" 
+        self.nimiOm = "Poltergeisti"
+        self.nimiOs = "Poltergeisti"
+        self.hp = 50
+        self.dmg = 8
+        self.weakness = "suskav"
+        self.dodge = 60
+        self.auhind = 25
         
 ### RELVAD ###
 class mõõk_inf():
@@ -933,6 +955,7 @@ def fight(koll):
             time.sleep(0.1)
 
         print("\n Kalevipeg leidis surnukehalt " + str(koll.auhind) + " kuldmünti.")
+        player.gold += koll.auhind
 
 #========================================================MÄNGU SELGROOG============================================================
 
