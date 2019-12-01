@@ -20,9 +20,11 @@ class player_inf():
     def __init__(self):
         self.mängu_staatus = False
         self.nimi = ""
-        self.hp = 100
+        self.hp = 30
         self.gold = 5
+
 player = player_inf()
+
 #===================================================================== RELVAD JA KOLLID ==================================================
 ### KOLLID ###
 
@@ -30,81 +32,89 @@ class koll_inf():
     def __init__(self):
         self.nimi = "Koll" 
         self.nimiOm = "Kolli"
-        self.NimiOs = "Kolli"
+        self.nimiOs = "Kolli"
         self.hp = 100
         self.dmg = 10
         self.weakness = "lõikav"
-        auhind = 50
+        self.dodge = 20
+        self.auhind = 50
 
 class hiidämblik_inf():
     def __init__(self):
         self.nimi = "Hiidämblik" 
         self.nimiOm = "Hiidämbliku"
-        self.NimiOs = "Hiidämblikku"
+        self.nimiOs = "Hiidämblikku"
         self.hp = 20
         self.dmg = 4
         self.weakness = "purustav"
-        auhind = 5
+        self.dodge = 15
+        self.auhind = 5
 
 class hiigelämblik_inf():
     def __init__(self):
         self.nimi = "Hiigelämblik" 
         self.nimiOm = "Hiigelämbliku"
-        self.NimiOs = "Hiigelämblikku"
+        self.nimiOs = "Hiigelämblikku"
         self.hp = 60
         self.dmg = 8
         self.weakness = "lõikav"
-        auhind = 25
+        self.dodge = 4
+        self.auhind = 25
 
 class harpüia_inf():
     def __init__(self):
         self.nimi = "Harpüia" 
         self.nimiOm = "Harpüia"
-        self.NimiOs = "Harpüiat"
+        self.nimiOs = "Harpüiat"
         self.hp = 15
         self.dmg = 5
         self.weakness = "kaugrünnak"
-        auhind = 5
+        self.dodge = 35
+        self.auhind = 5
 
 class zombi_inf():
     def __init__(self):
         self.nimi = "Zombi" 
         self.nimiOm = "Zombi"
-        self.NimiOs = "Zombit"
+        self.nimiOs = "Zombit"
         self.hp = 10
         self.dmg = 3
         self.weakness = "suskav"
-        auhind = 2
+        self.dodge = 3
+        self.auhind = 2
 
 class draakon_inf():
     def __init__(self):
         self.nimi = "Draakon" 
         self.nimiOm = "Draakoni"
-        self.NimiOs = "Draakonit"
+        self.nimiOs = "Draakonit"
         self.hp = 250
         self.dmg = 25
         self.weakness = "lõikav", "kaugrünnak"
-        auhind = 200
+        self.dodge = 5
+        self.auhind = 200
 
 class vampiir_inf():
     def __init__(self):
         self.nimi = "Vampiir" 
         self.nimiOm = "Vampiiri"
-        self.NimiOs = "Vampiiri"
-        self.hp = 20
-        self.dmg = 4
+        self.nimiOs = "Vampiiri"
+        self.hp = 30
+        self.dmg = 5
         self.weakness = "purustav"
-        auhind = 5
+        self.dodge = 25
+        self.auhind = 10
 
 class rott_inf():
     def __init__(self):
         self.nimi = "Rott" 
         self.nimiOm = "Roti"
-        self.NimiOs = "Rotti"
+        self.nimiOs = "Rotti"
         self.hp = 5
         self.dmg = 2
         self.weakness = "purustav"
-        auhind = 1
+        self.dodge = 25
+        self.auhind = 1
         
 ### RELVAD ###
 class mõõk_inf():
@@ -152,7 +162,7 @@ class vibu_inf():
         self.supercrit = 5
         self.type = "kaugrünnak"
 
-class nuga():
+class nuga_inf():
     def __init__(self):
         self.Nimi = "Nuga"
         self.nimi = "nuga"
@@ -167,7 +177,7 @@ class nuga():
         self.supercrit = 10
         self.type = "suskav"
 
-class vikat():
+class vikat_inf():
     def __init__(self):
         self.Nimi = "Vikat"
         self.nimi = "vikat"
@@ -182,7 +192,7 @@ class vikat():
         self.supercrit = 1
         self.type = "kaugrünnak", "lõikav"
 
-class sõjahaamer():
+class sõjahaamer_inf():
     def __init__(self):
         self.Nimi = "Sõjahaamer"
         self.nimi = "sõjahaamer"
@@ -197,7 +207,7 @@ class sõjahaamer():
         self.supercrit = 1
         self.type = "purustav"
 
-class amb():
+class amb_inf():
     def __init__(self):
         self.Nimi = "Amb"
         self.nimi = "amb"
@@ -205,14 +215,14 @@ class amb():
         self.nimiOm = "ammu"
         self.NimiOs = "Ambu"
         self.nimiOs = "ambu"
-        self.min_dmg = 5
+        self.min_dmg = 3
         self.dmg = 15
         self.miss = 30
         self.crit = 5
         self.supercrit = 2
         self.type = "kaugrünnak"
 
-class piits():
+class piits_inf():
     def __init__(self):
         self.Nimi = "Piits"
         self.nimi = "piits"
@@ -227,7 +237,7 @@ class piits():
         self.supercrit = 1
         self.type = "lõikav"
 
-class oda():
+class oda_inf():
     def __init__(self):
         self.Nimi = "Oda"
         self.nimi = "oda"
@@ -242,7 +252,7 @@ class oda():
         self.supercrit = 1
         self.type = "lõikav"
 
-class viskeoda():
+class viskeoda_inf():
     def __init__(self):
         self.Nimi = "Viskeoda"
         self.nimi = "viskeoda"
@@ -257,8 +267,8 @@ class viskeoda():
         self.supercrit = 1
         self.type = "kaugrünnak"
 
-relv = mõõk_inf()
-koll = koll_inf()
+relv = nui_inf()
+koll = vampiir_inf()
 #==============================================================POOD=================================================================
 ### Poe sisu ###
 relvad = {"mõõk":[10,False], #vastavalt (hind, omamine)
@@ -290,7 +300,7 @@ võlujoogid = {"elujook I": [3,0], #Vastavalt hind, kogus
 
 oskused = {"Oskus lüüa üks kord rohkem korraga": [30,False],
            "Oskus lüüa üks kord rohkem korraga": [50,False],
-           "Oskus lasta kaksüks kord rohkem korraga": [30,False],
+           "Oskus lasta üks kord rohkem korraga": [30,False],
            "Oskus lasta üks kord rohkem korraga": [50,False],
            "Oskus võitluse käigus relva vahetada": [15,False],
            "Oskus juua võlujooki käiku raiskamata": [15,False],
@@ -418,18 +428,67 @@ def shop():
             break
         else:
             pass
+
+
 ###======================================================VÕITLUSE FUNKTSIOON===================================================
 def fight(koll): 
     while koll.hp > 0 and player.hp > 0:
         #Siin seame parameetrid uue tsükli jaoks õigetele väärtusetele
         deftxt = True #kas lõpus prinditakse default teksti
-        dmg1 = 0  
+        dmg1 = 0
 
-        #valige relv
+        ######testimiseks###########
+        relv = nui_inf()
+        relvad["nui"][1] = True
+        oskused["Oskus võitluse käigus relva vahetada"][1] = True
+        ############################
+        
+        ##### valige relv ####
+        if oskused["Oskus võitluse käigus relva vahetada"][1] == True:
+            while True:
+                valik = input("Valige relv: ")
+                if valik in relvad:
+                    if relvad[valik][1] == True:
+                        if valik == "vibu":
+                            relv = vibu_inf()
+                            break
+                        elif valik == "mõõk":
+                            relv = mõõk_inf()
+                            break
+                        elif valik == "nui":
+                            relv = nui_inf()
+                            break
+                        elif valik == "sõjahaamer":
+                            relv = sõjahaamer_inf()
+                            break
+                        elif valik == "amb":
+                            relv = amb_inf()
+                            break
+                        elif valik == "piits":
+                            relv = piits_inf()
+                            break
+                        elif valik == "nuga":
+                            relv = nuga_inf()
+                            break
+                        elif valik == "oda":
+                            relv = oda_inf()
+                            break
+                        elif valik == "viskeoda":
+                            relv = viskeoda_inf()
+                            break
+                    else:
+                        print("Teil pole veel seda relva!")
+                elif valik == "":
+                    break
+                else:
+                    print("Valige relv nimekirjast: " + str(relvad.keys()).strip("dict_keys(").strip(")") + ".")
+            print("Teie relv on " + relv.nimi + ".")       
+                    
+        #### Löögitugevuse valimine ####            
         dmg_katse = 1000
-        while not 1<=dmg_katse<=relv.dmg:
+        while not relv.min_dmg<=dmg_katse<=relv.dmg:
             try:
-                dmg_katse = int(input("\nSisestage katsetatav löögi tugevus vahemikus 1..." + str(relv.dmg) + ": "))
+                dmg_katse = int(input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + ": "))
             except:
                 pass
 
@@ -437,12 +496,12 @@ def fight(koll):
         dmg1 = 0
 
         #### Missimine ####
-        if dmg_katse <= randint(0,relv.dmg):
+        if dmg_katse <= randint(relv.min_dmg,relv.dmg):
             if randint(1,100)<=relv.miss:
                 if type(relv) == mõõk_inf or type(relv) == vikat_inf:
                     print("Tõeline ebaõnn! Kalevipoja " + relv.nimi + " takerdus mättasse!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
                 elif type(relv) == amb_inf or type(relv) == vibu_inf:
-                    print("Oh ei!" + relv.NimiOm+ " nool lendas kaarega üle " + koll.nimiOm + " pea!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                    print("Oh ei! " + relv.NimiOm+ "nool lendas kaarega üle " + koll.nimiOm + " pea!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
                 elif type(relv) == sõjahaamer_inf:
                     print("Oh õnnetust! "+ koll.nimiOm + " pea asemel purustas möödaläinud löök süütu kivirahnu.\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
                 elif type(relv) == nui_inf:
@@ -457,7 +516,7 @@ def fight(koll):
                 
             else:
                 param = randint(1,100)
-                if param <= 20 and param > 1:
+                if param <= relv.crit and param > relv.supercrit:
                     dmg1 = dmg_katse*2
                     if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf: 
                         print("Erakordselt hästi sihitud löök tegi " + koll.nimiOm + "le kahekordselt viga!\n" + koll.nimiOm + "l on nüüd "+ str(koll.hp-dmg1) + " elupunkti.")
@@ -470,7 +529,7 @@ def fight(koll):
                     elif type(relv) == vibu_inf or type(relv) == amb_inf:
                         print("Erakordselt hästi sihitud lask tegi " + koll.nimiOm + "le kahekordselt viga!\n" + koll.nimiOm + "l on nüüd "+ str(koll.hp-dmg1) + " elupunkti.")                        
                     deftxt = False
-                elif param == 1:
+                elif param <= relv.supercrit:
                     dmg1 = dmg_katse*3
                     if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf: 
                         print("Vapustav! Suurepäraselt sihitud löök tegi " + koll.nimiOm + "le kolmekordselt viga!\n" + koll.nimiOm + "l on nüüd "+ str(koll.hp-dmg1) + " elupunkti.")
@@ -488,75 +547,79 @@ def fight(koll):
                     
         else:
             #Siia võib veel panna erinevad read vastavalt sisestatud dmg_katse väärtusele
-            if type(koll) == koll_inf or type(koll) == vampiir_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimi + " kargles mängleva kergusega löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print(koll.nimi + " tegi osava tagasihüppe, nii et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimiOm + "l õnnestus veel aegsasti lendava oda eest kõrvale hüpata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                    print(koll.nimi + " nägi aegsasti noolt ja heade refleksidega suutis end selle teelt eest väänata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+            if randint(1,100) <= koll.dodge: 
+                if type(koll) == koll_inf or type(koll) == vampiir_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimi + " kargles mängleva kergusega löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print(koll.nimi + " tegi osava tagasihüppe, nii et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimiOm + "l õnnestus veel aegsasti lendava oda eest kõrvale hüpata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                        print(koll.nimi + " nägi aegsasti noolt ja heade refleksidega suutis end selle teelt eest väänata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
 
-            elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimiOm + " kaheksa kiiret jalga aitasid tal lööki vältida.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print(koll.nimi + " kergitas oma kõhualust nii, et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimi + " tegi oma suuruse kohta uskumatult võimsa hüppe ja oda lendas kaugelt mööda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                    print("Nool vihises " + koll.nimiOm + " paljude jalgade vahelt läbi ja ei tabanud märki.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == piits_inf:
-                    print(koll.nimi + " hüppas " + relv.nimiOm + " teelt eest. Võimas elukas...")
+                elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimiOm + " kaheksa kiiret jalga aitasid tal lööki vältida.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print(koll.nimi + " kergitas oma kõhualust nii, et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimi + " tegi oma suuruse kohta uskumatult võimsa hüppe ja oda lendas kaugelt mööda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                        print("Nool vihises " + koll.nimiOm + " paljude jalgade vahelt läbi ja ei tabanud märki.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == piits_inf:
+                        print(koll.nimi + " hüppas " + relv.nimiOm + " teelt eest. Võimas elukas...")
 
-            elif type(koll) == harpüia_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimi + " vilgas keha ei saanud pihta.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print(koll.nimi + " lendles kergelt suske eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimiOm + "l oli napilt aega oda eest kõrvale liuelda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                    print("Nool ei tabanud "+ koll.nimiOs + ", sest tal õnnestus tiivad kokku tõmmata asukohta kiiresti muuta.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == piits_inf:                
-                    print(koll.nimi + " sai piitsa teelt kõrvale, nii et kuulda oli vaid tühja vihinat.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                elif type(koll) == harpüia_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimi + " vilgas keha ei saanud pihta.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print(koll.nimi + " lendles kergelt suske eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimiOm + "l oli napilt aega oda eest kõrvale liuelda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                        print("Nool ei tabanud "+ koll.nimiOs + ", sest tal õnnestus tiivad kokku tõmmata asukohta kiiresti muuta.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == piits_inf:                
+                        print(koll.nimi + " sai piitsa teelt kõrvale, nii et kuulda oli vaid tühja vihinat.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
 
-            elif type(koll) == zombi_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimi + " tuias löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print(koll.nimi + " tegi sammu tagasi, nii et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimiOm + "l õnnestus napilt lendava oda eest kõrvale astuda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
-                elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                    print(koll.nimi + " suutis noole teelt eest tuigerdada.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(koll) == zombi_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimi + " tuias löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print(koll.nimi + " tegi sammu tagasi, nii et suse tabas vaid õhku.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimiOm + "l õnnestus napilt lendava oda eest kõrvale astuda.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                    elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                        print(koll.nimi + " suutis noole teelt eest tuigerdada.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
 
-            elif type(koll) == rott_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimi + " sibas löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print(koll.nimi + " sibas suske eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimi + " sibas oda eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                    print(koll.nimi + " sibas noole teelt.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                elif type(koll) == rott_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == piits_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimi + " sibas löögi eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print(koll.nimi + " sibas suske eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimi + " sibas oda eest kõrvale.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                        print(koll.nimi + " sibas noole teelt.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
 
-            elif type(koll) == draakon_inf:
-                if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
-                    print(koll.nimiOm + " soomused peatasid löögi.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == oda_inf or type(relv) == nuga_inf:
-                    print("Suse tabas vaid lohe soomuseid ja ei suutnud neid läbida.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == viskeoda_inf:
-                    print(koll.nimiOm + " soomused peatasid oda jälgi jätmata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == vibu_inf:
-                    print("Lask tabas lohe vägevaid soomuseid ja " + koll.nimiOm + " soomustest ei pääseks ammunoolgi läbi...\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == amb_inf:
-                    print("Lask tabas lohe vägevaid soomuseid ja " + koll.nimiOm + " nool põrkas mõlkigi jätmata lihtsalt tagasi.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
-                elif type(relv) == piits_inf:
-                    print(relv.nimi + " tabas vaid " + koll.nimiOm + " soomuseid ja lohe ei pannud seda isegi tähele.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(koll) == draakon_inf:
+                    if type(relv) == mõõk_inf or type(relv) == vikat_inf or type(relv) == sõjahaamer_inf or type(relv) == nui_inf:
+                        print(koll.nimiOm + " soomused peatasid löögi.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == oda_inf or type(relv) == nuga_inf:
+                        print("Suse tabas vaid lohe soomuseid ja ei suutnud neid läbida.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == viskeoda_inf:
+                        print(koll.nimiOm + " soomused peatasid oda jälgi jätmata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == vibu_inf:
+                        print("Lask tabas lohe vägevaid soomuseid ja " + koll.nimiOm + " soomustest ei pääseks ammunoolgi läbi...\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == amb_inf:
+                        print("Lask tabas lohe vägevaid soomuseid ja " + koll.nimiOm + " nool põrkas mõlkigi jätmata lihtsalt tagasi.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.") 
+                    elif type(relv) == piits_inf:
+                        print(relv.nimi + " tabas vaid " + koll.nimiOm + " soomuseid ja lohe ei pannud seda isegi tähele.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
+            else:
+                dmg1 = relv.min_dmg
 
-        dmg2 = randint(0, koll.dmg) #kolli tehtud dmg
+                
+        dmg2 = randint(0, koll.dmg) #kolli tehtud dmg  
         player.hp -= dmg2
         koll.hp -= dmg1
 
@@ -572,44 +635,48 @@ def fight(koll):
             elif type(relv) == viskeoda_inf:
                 print("Kalevipoja visatud " + relv.nimi + " tabas märki ning " +  koll.nimi + " kaotas " + str(dmg1) + " elupunkti.\n" + koll.nimiOm +"l on " + str(koll.hp) + " elupunkti.")
             elif type(relv) == vibu_inf or type(relv) == amb_inf:
-                print("Kalevipoja poolt lendu lastud nool tabas " + koll.nimiOs + "ning " +  koll.nimi + " kaotas " + str(dmg1) + " elupunkti.\n" + koll.nimiOm +"l on " + str(koll.hp) + " elupunkti.")
+                print("Kalevipoja poolt lendu lastud nool tabas " + koll.nimiOs + " ning " +  koll.nimi + " kaotas " + str(dmg1) + " elupunkti.\n" + koll.nimiOm +"l on " + str(koll.hp) + " elupunkti.")
             elif type(relv) == piits_inf:
                 print("Kalevipoja ogaline piits tabas " + koll.nimiOs + " ning " +  koll.nimi + " kaotas " + str(dmg1) + " elupunkti.\n" + koll.nimiOm +"l on " + str(koll.hp) + " elupunkti.")
+
+        if koll.weakness == relv.type and dmg1 != 0:
+            koll.hp -= 2
+            print("\nHea relvavaliku tõttu kaotas " + koll.nimi + " veel 2 elupunkti. " + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.")
 
         ##### Kolli tehtud dmg-le vastav tekst #####
         if type(koll) == koll_inf:
             if dmg2 == 0:
-                print("\nKalevipojal õnnestus "+ koll.nimiOm + " rusikahoobi eest kõrvale põigelda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nKalevipojal õnnestus "+ koll.nimiOm + " rusikahoobi eest kõrvale põigelda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
                 print("\n" + koll.nimi + " andis Kalevipojale rusikahoobi ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
                 print("\n" + koll.nimi + " virutas jalaga ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             else:
-                print("\n Oi ei! " + koll.nimi + " sai Kalevipoja oma vägevasse haardesse jagab järjestikku hoope! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+                print("\nOi ei! " + koll.nimi + " sai Kalevipoja oma vägevasse haardesse jagab järjestikku hoope! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
         elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
             if dmg2 == 0:
-                print("\nKalevipojal vältis edukalt "+ koll.nimiOm + " jalahoopi!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nKalevipojal vältis edukalt "+ koll.nimiOm + " jalahoopi!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
                 print("\n" + koll.nimi + " lõi kalevipoega oma suure jalaga ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
-                print("\n Kalevipoeg jäi ämblikuvõrku lõksu! " + koll.nimi + " sai teda enne vabanemist korduvalt lüia ja hammustada ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+                print("\nKalevipoeg jäi ämblikuvõrku lõksu! " + koll.nimi + " sai teda enne vabanemist korduvalt lüia ja hammustada ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             else:
                 print("\n" + koll.nimi + " lõi Kalevipoja pikali ning " + koll.nimiOm + " vägevad lõuad sulguvad Kalevipoja kaela ümber... Kuid viimane proovib end valu trotsides vabaks võidelda. Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
-        elif type(koll) == hartpüia.inf:
+        elif type(koll) == harpüia_inf:
             if dmg2 == 0:
-                print("\nKalevipojal läks korda "+ koll.nimiOm + " küünte vahelt läbi liuelda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nKalevipojal läks korda "+ koll.nimiOm + " küünte vahelt läbi liuelda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
                 print("\n" + koll.nimiOm + " nugateravad küüned riivasid Kalevipoega ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
                 print("\n" + koll.nimiOm + " nõelteravad küüned suskasid sügavale Kalevipoja ihusse. Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             else:
-                print("\n Kalevipoeg kaotas hetkeks fookuse ja " + koll.nimiOm + " vahedad küüned lõikasid teda kõikjalt!" + koll.nimi + " sai isegi võimaluse oma oma kiskjahambad Kalevipoega lüüa. Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+                print("\nKalevipoeg kaotas hetkeks fookuse ja " + koll.nimiOm + " vahedad küüned lõikasid teda kõikjalt!" + koll.nimi + " sai isegi võimaluse oma oma kiskjahambad Kalevipoega lüüa. Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
         elif type(koll) == zombi_inf:
             if dmg2 == 0:
-                print("\nKalevipojal läks korda "+ koll.nimiOm + " kohmakate käte vahelt pääseda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nKalevipojal läks korda "+ koll.nimiOm + " kohmakate käte vahelt pääseda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
                 print("\n" + koll.nimiOm + " virutas Kalevipoega ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
@@ -619,7 +686,7 @@ def fight(koll):
 
         elif type(koll) == vampiir_inf:
             if dmg2 == 0:
-                print("\nKalevipojal läks korda "+ koll.nimiOm + " käte vahelt pääseda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nKalevipojal läks korda "+ koll.nimiOm + " käte vahelt pääseda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
                 print("\n" + koll.nimiOm + " virutas oma küünistega kätega Kalevipoega ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
@@ -629,7 +696,7 @@ def fight(koll):
 
         elif type(koll) == draakon_inf:
             if dmg2 == 0:
-                print("\n Imekombel läks Kalevipojal korda nii "+ koll.nimiOm + " küüniste kui ka leegi eest pääseda!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\nImekombel läks Kalevipojal korda nii "+ koll.nimiOm + " küüniste kui ka leegi eest pääseda!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.25*koll.dmg:
                 print("\n" + koll.nimiOm + " poolemeetrine küünis riivas Kalevipoega ning Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             elif 0 < dmg2 <= 0.5*koll.dmg:
@@ -637,16 +704,25 @@ def fight(koll):
             elif 0.5*koll.dmg < dmg2 <= 0.8*koll.dmg:
                 print("\n" + koll.nimiOm + " leek kõrvetab ka kaugelt! Hea, et Kalevipoeg otse pihta ei saanud... Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             else:
-                print("\n Oi ei!" + koll.nimi + " purskas tuld ja Kalevipojal ei jäänud aega kõrvale hüpata! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
+                print("\nOi ei!" + koll.nimi + " purskas tuld ja Kalevipojal ei jäänud aega kõrvale hüpata! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
         elif type(koll) == rott_inf:
             if dmg2 == 0:
-                print("\n"+ koll.nimiOm + " hambad näksasid tühja õhku!\n Kalevipojal on endiselt " + str(player.hp) + " elupunkti.")
+                print("\n"+ koll.nimiOm + " hambad näksasid tühja õhku!\nKalevipojal on endiselt " + str(player.hp) + " elupunkti.")
             elif dmg2 == 1:
                 print("\n" + koll.nimiOm + " hambad said kalevipoja varba kätte! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
             else:
                 print("\n" + koll.nimiOm + "l õnnestus Kalevipoega mööda üles ronida ja oma küüniste ja hammastega kangelasele haiget teha! Kalevipoeg kaotas " + str(dmg2) + " elupunkti.\n" + "Kalevipojal on " + str(player.hp) + " elupunkti.")
 
+        if type(koll) == vampiir_inf and koll.hp > 0:
+            if dmg2 > 0.5*koll.dmg:
+                koll.hp += round(0.75*dmg2)
+                if koll.hp > 30:
+                    koll.hp = 30
+                sleep(0.75)
+                print("\n" + koll.nimi + " imes omale " + str(round(0.75*dmg2)) + " elupunkti tagasi.\n" + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.\n")
+
+        
     #Fighti lõpp
     if player.hp <= 0:
         lõpp1 = "Vapper Kalevipoeg kukub väsinult põlvili maha"
@@ -659,7 +735,23 @@ def fight(koll):
             sys.stdout.flush()
             time.sleep(0.8)
         print("\n")
-        lõpp2 = koll.nimi + " haarab Kalevipoja peast kinni ning rebib selle otsast"
+
+        #### Erinevad surmad ####
+        if type(koll) == koll_inf:
+            lõpp2 = koll.nimi + " haarab Kalevipoja peast kinni ning rebib selle otsast"
+        elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
+            lõpp2 = koll.nimi + " lööb oma kihvad Kalevipoja kaela, tuimestades kangelase ja mähib ta seejärel tugevasse ämblikuvõrku"
+        elif type(koll) == harpüia_inf:
+            lõpp2 = koll.nimiOm + " teravad küüned suskavad Kalevipoja südamest läbi"
+        elif type(koll) == zombi_inf:
+            lõpp2 = koll.nimi + " võtab väsinud Kalevipoja oma haardesse ning pureb kangelase kägiveeni"
+        elif type(koll) == vampiir_inf:
+            lõpp2 = koll.nimi + " võtab väsinud Kalevipoja oma haardesse ning lööb kihvad kangelase kägiveeni"
+        elif type(koll) == draakon_inf:
+            lõpp2 = koll.nimiOm + " küünis läbistab Kalevipoja ja võiduka möirgega teeb lohe Kalevipojast grillliha"
+        elif type(koll) == rott_inf:
+            lõpp2 = koll.nimiOm + " pisikesed küüned rebivad küljest Kalevipoja silmad ning varsti jõuavad hambad ka kägiveenini kaelas"
+                
         for el in lõpp2:
             sys.stdout.write(el)
             sys.stdout.flush()
@@ -674,8 +766,23 @@ def fight(koll):
             sys.stdout.write(el)
             sys.stdout.flush()
             time.sleep(0.1)
+
     elif koll.hp <= 0:
-        lõpp1_1 = koll.nimi + " kukub korisedes sellili"
+        if type(koll) == koll_inf:
+            lõpp1_1 = koll.nimi + " kukub korisedes sellili"
+        elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
+            lõpp1_1 = koll.nimiOm + " jalad tõmbuvad krõnksu ja " + koll.nimi + " kukub selili maha"
+        elif type(koll) == harpüia_inf:
+            lõpp1_1 = koll.nimiOm + " auklikud tiivad ei ole enam võimelised " + koll.nimiOs + " õhus hoidma. " + koll.nimi + " kukub kohmakalt maha"
+        elif type(koll) == zombi_inf:
+            lõpp1_1 = koll.nimi + " kukub kähisedes kõhuli"
+        elif type(koll) == vampiir_inf:
+            lõpp1_1 = koll.nimi + " vajub põlvili ja tema piirjooned hägunevad"
+        elif type(koll) == draakon_inf:
+            lõpp1_1 = koll.nimi + " kukub maavärina saatel maha"
+        elif type(koll) == rott_inf:
+            lõpp1_1 = koll.nimi + " vajub niutsatusega kõhuli"
+
         for el in lõpp1_1:
             sys.stdout.write(el)
             sys.stdout.flush()
@@ -685,7 +792,62 @@ def fight(koll):
             sys.stdout.flush()
             time.sleep(0.8)
         print("\n")
-        lõpp2_1 = "Kalevipoeg võtab mõõgast kahe käega kinni ning lööb selle lapiti " + koll.nimiOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks."
+
+        if type(koll) == koll_inf or type(koll) == harpüia_inf or type(koll) == zombi_inf:
+            if type(relv) == mõõk_inf or type(relv) == vikat_inf:
+                lõpp2_1 = "Kalevipoeg võtab " + relv.nimiOm + "st kahe käega kinni ning lööb selle lapiti " + koll.nimiOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks."
+            elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
+                lõpp2_1 = "Kalevipoeg virutab " + relv.nimiOm + "ga vastu " + koll.nimiOm + " pead, purustades kolju ja muutes aju kördiks."
+            elif type(relv) == piits_inf:
+                lõpp2_1 = "Kalevipoja " + relv.nimi + " haakub ümber " + koll.nimiOm + " kaela ja tugeva tõmbega rebib Kalevipoeg " + koll.nimiOm + " pea otsast."
+            elif type(relv) == vibu_inf or type(relv) == amb_inf:
+                lõpp2_1 = "Kalevipoja läkitatud nool läheb " + koll.nimiOm + "l otse läbi silma ajju. Järgmine "+ relv.nimiOm + "nool läbistab südame."
+            elif type(relv) == oda_inf or type(relv) == viskeoda_inf or type(relv) == nuga_inf:
+                lõpp2_1 = "Kalevipoeg suskab " + relv.nimiOm + koll.nimiOm + "le otse lõua alla ja läbistab " + koll.nimiOm + " aju."
+
+        elif type(koll) == hiidämblik_inf or type(koll) == hiigelämblik_inf:
+            if type(relv) == mõõk_inf:
+                lõpp2_1 = "Kalevipoeg võtab " + relv.nimiOm + "st kahe käega kinni ning lööb selle lapiti " + koll.nimiOm + "le pähe kinni, purustades ta kolju ja muutes aju kördiks."
+            elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
+                lõpp2_1 = "Kalevipoeg virutab " + relv.nimiOm + "ga vastu " + koll.nimiOm + " pead, purustades kolju ja muutes aju kördiks."
+            elif type(relv) == piits_inf:
+                lõpp2_1 = "Kalevipoeg rebib " + relv.nimiOm + "ga ükshaaval " + koll.nimiOm + "l jalad küljest ja lõpuks on sama saatus ka peletise peal."
+            elif type(relv) == amb_inf or type(relv) == vibu_inf:
+                lõpp2_1 = "Kalevipoeg haarab " + relv.nimiOm + "noole kätte ja suskab ükshaaval igat " + koll.nimiOm + " silma."
+            elif type(relv) == oda_inf or type(relv) == viskeoda_inf:
+                lõpp2_1 = "Kalevipoeg haarab " + relv.nimiOm + "st kahe käega kinni ja rammib selle " + koll.nimiOm + " ajju."
+            elif type(relv) == nuga_inf:
+                lõpp2_1 = "Kalevipoeg suskab " + relv.nimiOs + koll.nimiOm + "igasse silma, kuni " + koll.nimiOm + "näost pole enam midagi järel."
+
+        elif type(koll) == vampiir_inf:
+            if type(relv) == mõõk_inf:
+                lõpp2_1 = "Kalevipoeg raiub " + koll.nimiOm + " pea otsast, et saada tagasi varastatud veri. " + koll.nimi + " hajub eimillekski."
+            elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
+                lõpp2_1 = "Kalevipoja " + relv.nimiOm + "löök purustab " + koll.nimiOm + " pea ja " + koll.nimi + " hajub eimillekski."
+            elif type(relv) == piits_inf:
+                lõpp2_1 = "Kalevipoja " + relv.nimi + " rebib " + koll.nimiOm + " pea otsast ja " + koll.nimi + " hajub igavikku."
+            elif type(relv) == amb_inf or type(relv) == vibu_inf:
+                lõpp2_1 = "Kalevipoeg pussitab " + relv.nimiOm + "noolega " + koll.nimiOs + " kuni see siit ilmast igavikku hajub."
+            elif type(relv) == oda_inf or type(relv) == viskeoda_inf:
+                lõpp2_1 = relv.Nimi + " läbistab " + koll.nimiOs + ", nii et see siit ilmast jäädavalt igavikku hajub." 
+            elif type(relv) == nuga_inf:
+                lõpp2_1 = "Kalevipoeg pussitab " + relv.nimiOm + "ga " + koll.nimiOs + " kuni see siit ilmast igavikku hajub."
+
+        elif type(koll) == draakon_inf:
+            if type(relv) == mõõk_inf:
+                lõpp2_1 = "Kalevipoeg raiub " + relv.nimiOm + "ga tundideviisi " + koll.nimiOm + " soomuselist kaela, et pea trofeeks koduseinale saada." 
+            elif type(relv) == nui_inf or type(relv) == sõjahaamer_inf:
+                lõpp2_1 = "Kalevipoeg nüpeldab " +relv.nimiOm + "ga " + koll.nimiOm + "pead, kuni jõuab lõpuks vääriskividest ajuni."
+            elif type(relv) == piits_inf:
+                lõpp2_1 = relv.NimiOm + "lööke on kuulda veel mitu päeva, enne kui Kalevipoeg lõpuks " + koll.NimiOm + "ga ühele poole saab ja võidukalt vägeva eluka peaga koju naaseb."
+            elif type(relv) == amb_inf or type(relv) == vibu_inf:
+                lõpp2_1 = relv.NimiOm + "nooled purustavad " + koll.nimiOm + "silmad ja Kalevipoeg urgitseb silmaavadest kalliskive."
+            elif type(relv) == oda_inf or type(relv) == viskeoda_inf or type(relv) == nuga_inf:
+                lõpp2_1 = "Kalevipoeg suskab " +relv.nimiOs + " läbi " + koll.nimiOm + "silmaavade ja avastab, et relva otsa külge jäävad teemantid."
+
+        elif type(koll) == rott_inf:
+            lõpp2_2 = "Kalevipoeg astub jalaga " + koll.nimiOs + " lödiks."
+
         for el in lõpp2_1:
             sys.stdout.write(el)
             sys.stdout.flush()
