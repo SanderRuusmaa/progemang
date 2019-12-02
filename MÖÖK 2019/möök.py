@@ -389,18 +389,15 @@ rüüd = {"nahkrüü": [10,False], #+20HP
 võlujoogid = {"elujook I": [3,0], #+8HP
               "elujook II": [8,0], #+24HP
               "elujook III": [18,0], #+60HP
-              "ründejook I": [3,0], #+1 dmg õnnestunud rünnakul
+              "ründejook I": [3,0], #+1dmg õnnestunud rünnakul (ründejoogid ei stacki, parim töötab)
               "ründejook II": [8,0], #+2dmg õnnestunud rünnakul
               "ründejook III": [18,0], #+3dmg õnnestunud rünnakul
-              "surematuse jook": [12,0], #3 käiku elu ei lange alla 1HP, cooldown 3 käiku
+              "surematuse jook": [12,0], #3 käiku elu ei lange alla 1HP, cooldown 3+3 käiku
               "vampiirijook": [12,0]} #healid ceil(0.5*dmg1) iga käigu lõpus fighti lõpuni
 
-oskused = {"Oskus lüüa vahel üks kord rohkem korraga": [30,False],
-           "Oskus lüüa vahel üks kord rohkem korraga": [50,False],
-           "Oskus lasta vahel üks kord rohkem korraga": [30,False],
-           "Oskus lasta vahel üks kord rohkem korraga": [50,False],
+oskused = {"Oskus teha vahel teine rünnak": [30,False],
            "Oskus võitluse käigus relva vahetada": [15,False], #implementeeritud
-           "Oskus juua võlujooki käiku raiskamata": [40,False], 
+           "Oskus juua võlujooki käiku raiskamata": [40,False], #implementeeritud
            "Oskus alati võitlusest põgeneda": [40,False], #implementeeritud
            "Oskus õnnetuid lööke ja laske vältida": [40,False]} #implementeeritud
 
@@ -441,7 +438,7 @@ def shop():
                 pass
             
         elif valik == "rüüd":
-            animeeri("\nMa näen, et teid huvitab meie rüükollektsioon! Heitke pilk peale ja laduge raha lauale! Siin on valikud:")
+            animeeri("\nMa näen, et teid huvitab meie rüükollektsioon! Heitke pilk peale ja laduge raha lauale! Siin on meie valik:\n")
             for k in rüüd:
                 print(k + ": " + str(rüüd[k][0]))
             valik2 = input("Sisestage, mida soovite osta või \"tagasi\", kui soovite tagasi pöörduda: ")
@@ -459,6 +456,21 @@ def shop():
                     rüüd[valik2][1] = True
                     player.gold -= rüüd[valik2][0]
                     print("Teil on nüüd rüü: " + valik2 + ".\n")
+                    if valik2 == "nahkrüü":
+                        player.hp += 20
+                        player.hp_max += 20
+                    elif valik2 == "rõngassärk":
+                        player.hp += 30
+                        player.hp_max += 30
+                    elif valik2 == "raudrüü":
+                        player.hp += 35
+                        player.hp_max += 35
+                    elif valik2 == "meisterlik raudrüü":
+                        player.hp += 45
+                        player.hp_max += 45
+                    elif valik2 == "haldjarauast rüü":
+                        player.hp += 50
+                        player.hp_max += 50
                     sleep(0.5)
                 elif parameeter == True and player.gold < rüüd[valik2][0] and rüüd[valik2][1] == False:
                     print("Teil kahjuks pole piisavalt kulda selle ostu sooritamiseks.\n")
@@ -470,7 +482,7 @@ def shop():
                 pass
 
         elif valik == "võlujoogid":
-            animeeri("\nNäen, et imetlete meie võlujooke. Need kõik võivad olla teie, kui te vaid maksate! Siin on meie valik:")
+            animeeri("\nNäen, et imetlete meie võlujooke. Need kõik võivad olla teie, kui te vaid maksate! Siin on meie valik:\n")
             for k in võlujoogid:
                 print(k + ": " + str(võlujoogid[k][0]))
             valik2 = input("Sisestage, mida soovite osta või \"tagasi\", kui soovite tagasi pöörduda: ")
@@ -494,7 +506,7 @@ def shop():
                     sleep(0.5)
              
         elif valik == "oskused":
-            animeeri("\nNäen, et uurite meie intensiivse treeningu kava. Paremaid võitlusoskuseid kui meiega ei saa te kuskil kuningriigis! Siin on meie programmid:")
+            animeeri("\nNäen, et uurite meie intensiivse treeningu kava. Paremaid võitlusoskuseid kui meiega ei saa te kuskil kuningriigis! Siin on meie pakutavad programmid:\n")
             for k in oskused:
                 print(k + ": " + str(oskused[k][0]))
             valik2 = input("Sisestage, mida soovite osta või \"tagasi\", kui soovite tagasi pöörduda: ")
@@ -528,12 +540,14 @@ def shop():
 
 
 ###======================================================VÕITLUSE FUNKTSIOON===================================================
+
 ######testimiseks###########
-koll = hiigelämblik_inf()
+koll = zombi_inf()
 ############################
 def fight(koll):
     ####testimiseks####
-    relv = mõõk_inf()
+    relv = rusikad_inf()
+    oskused["Oskus teha vahel teine rünnak"][1] = True
     ###################
     
     põgene = False #Kas õnnestus põgeneda
@@ -543,6 +557,7 @@ def fight(koll):
     surematusejook = 0
     vampiirijook = False
     cooldown = 0 #loeb, millal saab surematuse jooki juua
+    
     while koll.hp > 0 and player.hp > 0:
         #Siin seame parameetrid uue tsükli jaoks õigetele väärtusetele
         deftxt = True #kas lõpus prinditakse default teksti
@@ -602,9 +617,9 @@ def fight(koll):
             print("Teie relv on " + relv.nimi + ".")       
         #############################################
 
-        #### Löögitugevuse valimine ####        
+        #### Löögitugevuse, põgenemise või võlujoogi joomise valimine ####        
         dmg_katse = 1000
-        while not relv.min_dmg<=dmg_katse<=relv.dmg: 
+        while not relv.min_dmg <= dmg_katse <= relv.dmg: 
             dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\": ")
             if dmg_katse == "põgene":
                 põgenemiskatse = True
@@ -916,6 +931,35 @@ def fight(koll):
                 koll.hp -= 1
                 print("\nRündejoogist III saadud jõu tõttu kaotas " + koll.nimi + " veel 3 elupunkti. " + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.")
             
+        if oskused["Oskus teha vahel teine rünnak"][1] == True and randint(1,100) < 20:
+            print("\nKalveipojal õnnestus teha veel üks rünnak!")
+            sleep(0.75)
+            if randint(1,100)<=koll.dodge:
+                print("\n... kuid " + koll.nimiOm + "l õnnestus seda vältida. " + koll.nimiOm + "l on endiselt " + str(koll.hp) + " elupunkti.")
+            elif randint(1,100)<=relv.miss and oskused["Oskus õnnetuid lööke ja laske vältida"][1] == False:
+                if type(relv) == mõõk_inf or type(relv) == vikat_inf:
+                    print("\n... kuid Kalevipoja " + relv.nimi + " takerdus mättasse!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == amb_inf or type(relv) == vibu_inf:
+                    print("\n... kuid " + relv.nimiOm+ "nool lendas kaarega üle " + koll.nimiOm + " pea!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == sõjahaamer_inf:
+                    print("\n... kuid "+ koll.nimiOm + " pea asemel purustas möödaläinud löök süütu kivirahnu.\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == nui_inf:
+                    print("\n... kuid ebamugava käepideme tõttu pudenes " + relv.nimi + " Kalevipojal käest!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == nuga_inf or type(relv) == oda_inf:
+                    print("\n... kuid " + relv.nimi + " tabas vaid paljast õhku.\n" +koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == piits_inf:
+                    print("\n... kuid " + relv.nimi + " takerdus enne " + koll.nimiOm + "ni jõudmist millessegi.\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == viskeoda_inf:
+                    print("\n... kuid Kalevipoeg viskas " + relv.NimiOs + " vale ots ees ja see kukkus õnnetult enne " + koll.nimiOm + " lähedalegi jõudmist maha.\n"+ koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
+                elif type(relv) == rusikad_inf:
+                    print("\n... kuid rusikahoop läks hoopis mööda!")
+            elif randint(relv.min_dmg,relv.dmg) >= dmg1:
+                koll.hp -= dmg1
+                print("\n... ja " + koll.nimi + " kaotas " + str(dmg1) + " elupunkti! " + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.")
+            else:
+                koll.hp -= relv.min_dmg
+                print("\n... ja ehkki löök polnud õnnestunuim, kaotas " + koll.nimi + " siiski " + str(dmg1) + " elupunkti! " + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.")
+
         ##### Kolli tehtud dmg-le vastav tekst #####
         if type(koll) == koll_inf:
             if dmg2 == 0:
@@ -1456,7 +1500,6 @@ käsk()
 move_counter = 0
 #kolli_rünne()
 fight(koll)
-#fight(koll)
 """while player.mängu_staatus == False:
     käsk()
     
