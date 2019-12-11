@@ -36,12 +36,14 @@ class koll_inf():
         self.nimi = "Sookoll" 
         self.nimiOm = "Sookolli"
         self.nimiOs = "Sookolli"
-        self.hp = 20
+        self.hp = 100
+        self.maxhp = 100
         self.dmg = 10
         self.weakness = "lõikav"
         self.dodge = 20
         self.escape = 25
         self.auhind = 35
+        self.alles = 2
 
 class hiidämblik_inf():
     def __init__(self):
@@ -49,11 +51,13 @@ class hiidämblik_inf():
         self.nimiOm = "Hiidämbliku"
         self.nimiOs = "Hiidämblikku"
         self.hp = 30
+        self.maxhp = 30
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 15
         self.escape = 50
         self.auhind = 5
+        self.alles = 10
 
 class hiigelämblik_inf():
     def __init__(self):
@@ -61,11 +65,13 @@ class hiigelämblik_inf():
         self.nimiOm = "Hiigelämbliku"
         self.nimiOs = "Hiigelämblikku"
         self.hp = 60
+        self.maxhp = 60
         self.dmg = 9
         self.weakness = "lõikav"
         self.dodge = 4
         self.escape = 20
         self.auhind = 25
+        self.alles = 10
 
 class harpüia_inf():
     def __init__(self):
@@ -73,11 +79,13 @@ class harpüia_inf():
         self.nimiOm = "Harpüia"
         self.nimiOs = "Harpüiat"
         self.hp = 25
+        self.maxhp = 25
         self.dmg = 5
         self.weakness = "kaugrünnak"
         self.dodge = 35
         self.escape = 20
         self.auhind = 8
+        self.alles = 8
 
 class zombi_inf():
     def __init__(self):
@@ -85,11 +93,13 @@ class zombi_inf():
         self.nimiOm = "Zombi"
         self.nimiOs = "Zombit"
         self.hp = 15
+        self.maxhp = 15
         self.dmg = 3
         self.weakness = "suskav"
         self.dodge = 3
         self.escape = 80
         self.auhind = 5
+        self.alles = 10
 
 class draakon_inf():
     def __init__(self):
@@ -97,12 +107,14 @@ class draakon_inf():
         self.nimiOm = "Draakoni"
         self.nimiOs = "Draakonit"
         self.hp = 500
+        self.maxhp = 500
         self.dmg = 25
         self.weakness = "lõikav"
         self.weakness = "kaugrünnak"
         self.dodge = 5
         self.escape = 25
         self.auhind = 250
+        self.alles = 1
 
 class vampiir_inf():
     def __init__(self):
@@ -110,11 +122,13 @@ class vampiir_inf():
         self.nimiOm = "Vampiiri"
         self.nimiOs = "Vampiiri"
         self.hp = 30
+        self.maxhp = 30
         self.dmg = 5
         self.weakness = "purustav"
         self.dodge = 25
         self.escape = 50
         self.auhind = 10
+        self.alles = 5
         ### Vampiir imeb omale tugeva hiti puhul 3 või 4 elu tagasi
 
 class rott_inf():
@@ -123,11 +137,13 @@ class rott_inf():
         self.nimiOm = "Roti"
         self.nimiOs = "Rotti"
         self.hp = 5
+        self.maxhp = 5
         self.dmg = 2
         self.weakness = "purustav"
         self.dodge = 25
         self.escape = 65
         self.auhind = 3
+        self.alles = 10
 
 class hiidrott_inf():
     def __init__(self):
@@ -135,11 +151,13 @@ class hiidrott_inf():
         self.nimiOm = "Hiidroti"
         self.nimiOs = "Hiidrotti"
         self.hp = 15
+        self.maxhp = 15
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 20
         self.escape = 60
         self.auhind = 5
+        self.alles = 10
 
 class hiigelrott_inf():
     def __init__(self):
@@ -147,11 +165,13 @@ class hiigelrott_inf():
         self.nimiOm = "Hiigelroti"
         self.nimiOs = "Hiigelrotti"
         self.hp = 35
+        self.maxhp = 35
         self.dmg = 6
         self.weakness = "purustav"
         self.dodge = 13
         self.escape = 50
         self.auhind = 10
+        self.alles = 8
 
 class muumia_inf():
     def __init__(self):
@@ -159,11 +179,13 @@ class muumia_inf():
         self.nimiOm = "Muumia"
         self.nimiOs = "Muumiat"
         self.hp = 50
+        self.maxhp = 50
         self.dmg = 6
         self.weakness = "suskav"
         self.dodge = 10
         self.escape = 75
         self.auhind = 20
+        self.alles = 4
         #Tappev aura: Iga käigu lõpus kaotab mängija ceil(10% alles olevatest eludest)
 
 class kummitus_inf():
@@ -172,11 +194,13 @@ class kummitus_inf():
         self.nimiOm = "Kummituse"
         self.nimiOs = "Kummitust"
         self.hp = 20
+        self.maxhp = 20
         self.dmg = 4
         self.weakness = "suskav"
         self.dodge = 50
         self.escape = 45
         self.auhind = 8
+        self.alles = 8
 
 class poltergeist_inf():
     def __init__(self):
@@ -184,11 +208,13 @@ class poltergeist_inf():
         self.nimiOm = "Poltergeisti"
         self.nimiOs = "Poltergeisti"
         self.hp = 50
+        self.maxhp = 50
         self.dmg = 8
         self.weakness = "suskav"
         self.dodge = 50
         self.escape = 45
         self.auhind = 25
+        self.alles = 4
         
 
 rotid = [rott_inf(), hiidrott_inf()]
@@ -1249,6 +1275,15 @@ def fight(koll):
 
         print("\nKalevipeg leidis surnukehalt " + str(koll.auhind) + " kuldmünti.")
         player.gold += koll.auhind
+        koll.hp = koll.maxhp
+        koll.alles -= 1
+        if koll.alles == 0:
+            if koll in rotid:
+                rotid.remove(koll)
+            elif koll in nõrgemad_kollid:
+                nõrgemad_kollid.remove(koll)
+            elif koll in tugevamad_kollid:
+                tugevamad_kollid.remove(koll)
 
 #========================================================MÄNGU SELGROOG============================================================
 
@@ -1362,7 +1397,7 @@ def käsk():
     tegevus = input("\n> ")
     aktsepteeritud = ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra","keera", "patseeri", "flaneeri", "quit", "exit game", "quicktravel"]
     if tegevus.lower() not in aktsepteeritud:
-        animeeri("Tundmatu käsk, proovime uuesti...")
+        print("Tundmatu käsk, proovime uuesti...")
     while tegevus.lower() not in aktsepteeritud:
         käsk()
     if tegevus.lower() in ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra", "keera", "patseeri", "flaneeri"]:
@@ -1431,7 +1466,7 @@ def player_movement():
         if chance == 1 or chance == 2:
             kolli_rünne()
     else:
-        animeeri("Tundmatu käsk, proovime uuesti...\n")
+        print("Tundmatu käsk, proovime uuesti...\n")
     
 ### Mängu intro ###
 #Nime küsimine jms
