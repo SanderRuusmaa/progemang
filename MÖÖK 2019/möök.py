@@ -15,6 +15,11 @@ def animeeri(tekst):
         sys.stdout.write(el)
         sys.stdout.flush()
         time.sleep(0.05)
+def kiiranimeeri(tekst):
+    for el in tekst:
+        sys.stdout.write(el)
+        sys.stdout.flush()
+        time.sleep(0.025)
 
 ### Mängija setup ###
 class player_inf():
@@ -533,7 +538,7 @@ def shop():
                     sleep(0.5)
                 
         elif valik == "lahku":
-            animeeri("Lahkusite poest.")
+            animeeri("Lahkusite poest.\n")
             break
         else:
             pass
@@ -1342,7 +1347,7 @@ def display_the_logo():
         sys.stdout.write(el)
         sys.stdout.flush()
         time.sleep(0.2)
-    time.sleep(5)
+    time.sleep(4)
 
 ### Mängu interaktiivsus ###
 move_counter = 0
@@ -1358,11 +1363,11 @@ def käsk():
     for el in "Mis on sinu järgmine tegevus?":
         sys.stdout.write(el)
         sys.stdout.flush()
-        time.sleep(0.05)
+        time.sleep(0.025)
     tegevus = input("\n> ")
     aktsepteeritud = ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra","keera", "patseeri", "flaneeri", "quit", "exit game", "quicktravel"]
     if tegevus.lower() not in aktsepteeritud:
-        animeeri("Tundmatu käsk, proovime uuesti...")
+        kiiranimeeri("Tundmatu käsk, proovime uuesti...")
     while tegevus.lower() not in aktsepteeritud:
         käsk()
     if tegevus.lower() in ["mine", "liigu", "jookse", "kõnni", "jaluta", "pööra", "keera", "patseeri", "flaneeri"]:
@@ -1385,53 +1390,53 @@ def player_movement():
     global move_counter
     #QUICK TRAVEL#
     if quicktravel == True:
-        animeeri("Kuhu sa kiiresti liikuda sooviksid? (Sisesta tsooni nimi)\n")
+        kiiranimeeri("Kuhu sa kiiresti liikuda sooviksid? (Sisesta tsooni nimi)\n")
         siht = input("> ")
         if siht.lower().capitalize() in asukohad:
             indeks = asukohad.index(siht.lower().capitalize())
             if kaart[asukohad[indeks]] is True:
                 move_counter = indeks
-                animeeri("Sa kiirliikusid kohta, nimega " + asukohad[move_counter] +".\n\n")
+                kiiranimeeri("Sa kiirliikusid kohta, nimega " + asukohad[move_counter] +".\n\n")
             else:
-                animeeri("See tsoon on avastamata, seega sinna ei saa kiirliikuda! Jääd samasse tsooni.\n\n")
+                kiiranimeeri("See tsoon on avastamata, seega sinna ei saa kiirliikuda! Jääd samasse tsooni.\n\n")
             
         else:
-            animeeri("Tundmatu asukoht.")
+            kiiranimeeri("Tundmatu asukoht.")
          
         quicktravel = False
         
         
-    animeeri("Kuhu sa minna soovid? (läände, itta, põhja, lõunasse, poodi)\n")
+    kiiranimeeri("Kuhu sa minna soovid? (põhi, lõuna, ida, lääs, poodi)\n")
     siht = input("> ")
     chance = randint(0,2)
     if siht.lower() == "poodi":
         shop()
-    elif siht.lower() == "läände":
+    elif siht.lower() == "lääs":
         läände += 1
-        animeeri("Liikusid suunaga läände.\n")
+        kiiranimeeri("Liikusid suunaga läände.\n")
         liikumine()
         if chance == 1 or chance == 2:
             kolli_rünne()
-    elif siht.lower() == "itta":
+    elif siht.lower() == "ida":
         itta += 1
-        animeeri("Liikusid itta.\n")
+        kiiranimeeri("Liikusid itta.\n")
         liikumine()
         if chance == 1 or chance == 2:
             kolli_rünne()
-    elif siht.lower() == "põhja":
+    elif siht.lower() == "põhi":
         põhja += 1
-        animeeri("Jalutasid põhja suunas.\n")
+        kiiranimeeri("Jalutasid põhja suunas.\n")
         liikumine()
         if chance == 1 or chance == 2:
             kolli_rünne()
-    elif siht. lower() == "lõunasse":
+    elif siht. lower() == "lõuna":
         lõunasse += 1
-        animeeri("Patseerisid lõuna suunas.\n")
+        kiiranimeeri("Patseerisid lõuna suunas.\n")
         liikumine()
         if chance == 1 or chance == 2:
             kolli_rünne()
     else:
-        animeeri("Tundmatu käsk, proovime uuesti...\n")
+        kiiranimeeri("Tundmatu käsk, proovime uuesti...\n")
     
 ### Mängu intro ###
 #Nime küsimine jms
