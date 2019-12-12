@@ -634,7 +634,7 @@ def fight(koll):
                     dmg_katse = relv.min_dmg
                     break
                 elif randint(1,100) <= koll.escape:
-                    print("Kalevipojal õnnestus " + koll.nimiOm + " eest plehku pista!")
+                    animeeri("Kalevipojal õnnestus " + koll.nimiOm + " eest plehku pista!")
                     põgene = True
                     dmg_katse = relv.min_dmg
                     break
@@ -1528,8 +1528,11 @@ def kolli_rünne():
         tugevad_kollid = [poltergeist_inf(), muumia_inf(), hiigelrott_inf(), vampiir_inf(), hiigelämblik_inf(), koll_inf()]
         boss = draakon_inf()"""
     chance = randint(0, 10)
-    
-    if asukohad[move_counter] == "Näriliste põld":
+    if asukohad[move_counter] == "Oma talu":
+        if chance <= 4:
+            animeeri("Ah sa mait, sinu teele kargas " + rotid[0].nimi + "...\nAlgab vägev võitlus.")
+            fight(rotid[0])
+    elif asukohad[move_counter] == "Näriliste põld":
         if chance <= 7:
             animeeri("Ah sa mait, sinu teele kargas " + rotid[0].nimi + "...\nAlgab vägev võitlus.")
             fight(rotid[0])
