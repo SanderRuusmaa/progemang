@@ -1,6 +1,6 @@
 Mäng töötab bash shellis. Windows OS arvutiga on vaja läbida järgnevad sammud, enne kasutamist:
 -Otsida Control Panelist või alt otsingu rea pealt "Windows Features", sealt lisa linnuke "Windows Subsystem for Linux"
--Microsoft store-ist alla alladida "Ubuntu"
+-Microsoft store-ist alla alladida "Ubuntu" VÕI mine siia https://www.microsoft.com/en-us/p/ubuntu/9nblggh4msv6?activetab=pivot:overviewtab
 -Kirjutad windowsi otsinugsse "bash", peaks avanema, ootad kuni ära installib jne
 
 
@@ -23,7 +23,7 @@ Mäng töötab bash shellis. Windows OS arvutiga on vaja läbida järgnevad sammud, e
 	ET COPY PASTEIDA SIIT BASH TERMINALI, selectid käsu, CTRL+C ja bashis vajutad paremat hiire klõpsu
 
 
-Et macOS-il tššle saada:
+Et macOS-il tööššle saada:
 	-ava terminal ja installi python3 jŠrgnevate commadidega
 	- /usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	- brew install python3
