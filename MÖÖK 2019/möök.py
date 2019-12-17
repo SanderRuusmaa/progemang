@@ -41,12 +41,14 @@ class koll_inf():
         self.nimi = "Sookoll" 
         self.nimiOm = "Sookolli"
         self.nimiOs = "Sookolli"
-        self.hp = 20
+        self.hp = 100
+        self.maxhp = 100
         self.dmg = 10
         self.weakness = "lõikav"
         self.dodge = 20
         self.escape = 25
         self.auhind = 35
+        self.alles = 2
 
 class hiidämblik_inf():
     def __init__(self):
@@ -54,11 +56,13 @@ class hiidämblik_inf():
         self.nimiOm = "Hiidämbliku"
         self.nimiOs = "Hiidämblikku"
         self.hp = 30
+        self.maxhp = 30
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 15
         self.escape = 50
         self.auhind = 5
+        self.alles = 10
 
 class hiigelämblik_inf():
     def __init__(self):
@@ -66,11 +70,13 @@ class hiigelämblik_inf():
         self.nimiOm = "Hiigelämbliku"
         self.nimiOs = "Hiigelämblikku"
         self.hp = 60
+        self.maxhp = 60
         self.dmg = 9
         self.weakness = "lõikav"
         self.dodge = 4
         self.escape = 20
         self.auhind = 25
+        self.alles = 10
 
 class harpüia_inf():
     def __init__(self):
@@ -78,11 +84,13 @@ class harpüia_inf():
         self.nimiOm = "Harpüia"
         self.nimiOs = "Harpüiat"
         self.hp = 25
+        self.maxhp = 25
         self.dmg = 5
         self.weakness = "kaugrünnak"
         self.dodge = 35
         self.escape = 20
         self.auhind = 8
+        self.alles = 8
 
 class zombi_inf():
     def __init__(self):
@@ -90,11 +98,13 @@ class zombi_inf():
         self.nimiOm = "Zombi"
         self.nimiOs = "Zombit"
         self.hp = 15
+        self.maxhp = 15
         self.dmg = 3
         self.weakness = "suskav"
         self.dodge = 3
         self.escape = 80
         self.auhind = 5
+        self.alles = 10
 
 class draakon_inf():
     def __init__(self):
@@ -102,12 +112,14 @@ class draakon_inf():
         self.nimiOm = "Draakoni"
         self.nimiOs = "Draakonit"
         self.hp = 500
+        self.maxhp = 500
         self.dmg = 25
         self.weakness = "lõikav"
         self.weakness = "kaugrünnak"
         self.dodge = 5
         self.escape = 25
         self.auhind = 250
+        self.alles = 1
 
 class vampiir_inf():
     def __init__(self):
@@ -115,11 +127,13 @@ class vampiir_inf():
         self.nimiOm = "Vampiiri"
         self.nimiOs = "Vampiiri"
         self.hp = 30
+        self.maxhp = 30
         self.dmg = 5
         self.weakness = "purustav"
         self.dodge = 25
         self.escape = 50
         self.auhind = 10
+        self.alles = 5
         ### Vampiir imeb omale tugeva hiti puhul 3 või 4 elu tagasi
 
 class rott_inf():
@@ -128,11 +142,13 @@ class rott_inf():
         self.nimiOm = "Roti"
         self.nimiOs = "Rotti"
         self.hp = 5
+        self.maxhp = 5
         self.dmg = 2
         self.weakness = "purustav"
         self.dodge = 25
         self.escape = 65
         self.auhind = 3
+        self.alles = 10
 
 class hiidrott_inf():
     def __init__(self):
@@ -140,11 +156,13 @@ class hiidrott_inf():
         self.nimiOm = "Hiidroti"
         self.nimiOs = "Hiidrotti"
         self.hp = 15
+        self.maxhp = 15
         self.dmg = 4
         self.weakness = "purustav"
         self.dodge = 20
         self.escape = 60
         self.auhind = 5
+        self.alles = 10
 
 class hiigelrott_inf():
     def __init__(self):
@@ -152,11 +170,13 @@ class hiigelrott_inf():
         self.nimiOm = "Hiigelroti"
         self.nimiOs = "Hiigelrotti"
         self.hp = 35
+        self.maxhp = 35
         self.dmg = 6
         self.weakness = "purustav"
         self.dodge = 13
         self.escape = 50
         self.auhind = 10
+        self.alles = 8
 
 class muumia_inf():
     def __init__(self):
@@ -164,11 +184,13 @@ class muumia_inf():
         self.nimiOm = "Muumia"
         self.nimiOs = "Muumiat"
         self.hp = 50
+        self.maxhp = 50
         self.dmg = 6
         self.weakness = "suskav"
         self.dodge = 10
         self.escape = 75
         self.auhind = 20
+        self.alles = 4
         #Tappev aura: Iga käigu lõpus kaotab mängija ceil(10% alles olevatest eludest)
 
 class kummitus_inf():
@@ -177,11 +199,13 @@ class kummitus_inf():
         self.nimiOm = "Kummituse"
         self.nimiOs = "Kummitust"
         self.hp = 20
+        self.maxhp = 20
         self.dmg = 4
         self.weakness = "suskav"
         self.dodge = 50
         self.escape = 45
         self.auhind = 8
+        self.alles = 8
 
 class poltergeist_inf():
     def __init__(self):
@@ -189,11 +213,13 @@ class poltergeist_inf():
         self.nimiOm = "Poltergeisti"
         self.nimiOs = "Poltergeisti"
         self.hp = 50
+        self.maxhp = 50
         self.dmg = 8
         self.weakness = "suskav"
         self.dodge = 50
         self.escape = 45
         self.auhind = 25
+        self.alles = 4
         
 
 rotid = [rott_inf(), hiidrott_inf()]
@@ -400,18 +426,18 @@ võlujoogid = {"elujook I": [3,0], #+8HP
               "surematuse jook": [12,0], #3 käiku elu ei lange alla 1HP, cooldown 3+3 käiku
               "vampiirijook": [12,0]} #healid ceil(0.5*dmg1) iga käigu lõpus fighti lõpuni
 
-oskused = {"Oskus teha vahel teine rünnak": [30,False],
-           "Oskus võitluse käigus relva vahetada": [15,False], #implementeeritud
-           "Oskus juua võlujooki käiku raiskamata": [40,False], #implementeeritud
-           "Oskus alati võitlusest põgeneda": [40,False], #implementeeritud
-           "Oskus õnnetuid lööke ja laske vältida": [40,False]} #implementeeritud
+oskused = {"oskus teha vahel teine rünnak": [30,False],
+           "oskus võitluse käigus relva vahetada": [15,False], #implementeeritud
+           "oskus juua võlujooki käiku raiskamata": [40,False], #implementeeritud
+           "oskus alati võitlusest põgeneda": [40,False], #implementeeritud
+           "oskus õnnetuid lööke ja laske vältida": [40,False]} #implementeeritud
 
 ########## Poe funktsioon ############
 
 def shop():
     print("Tere! ", end="")
     while True:
-        valik = input("Mida soovite osta? Kui relvi, siis kirjutage \"relvad\", kui rüüsid, kirjutage \"rüüd\", kui võlujooke, kirjutage \"võlujoogid\", kui oskuseid, kirjutage \"oskused\", kui soovite poest lahkuda, kirjutage \"lahku\": ")
+        valik = input("Mida soovite osta? Kui relvi, siis kirjutage \"relvad\", kui rüüsid, kirjutage \"rüüd\", kui võlujooke, kirjutage \"võlujoogid\", kui oskuseid, kirjutage \"oskused\", kui soovite poest lahkuda, kirjutage \"lahku\": \nSul on "+ str(player.gold)+ " kuldmünti.\n>")
         sleep(0.5)
         if valik == "relvad":
             animeeri("\nAh et soovite meie kvaliteetseid relvi vaadata! Siin on meie valik:\n")
@@ -517,7 +543,7 @@ def shop():
             valik2 = input("Sisestage, mida soovite osta või \"tagasi\", kui soovite tagasi pöörduda: ")
             if valik2 == "tagasi":
                 pass
-            elif valik2 in rüüd:
+            elif valik2.lower() in oskused:
                 kas_osta = input("Kas soovite osta " + valik2 + "? Kirjutage \"jah\" või \"ei\": ")
                 parameeter = False
                 if kas_osta == "jah":
@@ -546,14 +572,11 @@ def shop():
 
 ###======================================================VÕITLUSE FUNKTSIOON===================================================
 
-######testimiseks###########
-koll = zombi_inf()
-############################
 def fight(koll):
-    ####testimiseks####
+
     relv = rusikad_inf()
-    oskused["Oskus teha vahel teine rünnak"][1] = True
-    ###################
+    oskused["oskus teha vahel teine rünnak"][1] = False
+
     
     põgene = False #Kas õnnestus põgeneda
     ründejook1 = False
@@ -574,7 +597,7 @@ def fight(koll):
             surematusejook -= 1
         
         ##### valige relv ####
-        if oskused["Oskus võitluse käigus relva vahetada"][1] == True:
+        if oskused["oskus võitluse käigus relva vahetada"][1] == True:
             animeeri("Sinu relvavalik: \n")
             weapons = []
             for weapon in relvad:
@@ -628,7 +651,7 @@ def fight(koll):
             dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\": ")
             if dmg_katse == "põgene":
                 põgenemiskatse = True
-                if oskused["Oskus alati võitlusest põgeneda"][1] == True:
+                if oskused["oskus alati võitlusest põgeneda"][1] == True:
                     print("Oma meisterlikku põgenemisoskust kasutades oli Kalevipjal käkitegu " + koll.nimiOm + " eest plehku pista!")
                     põgene = True
                     dmg_katse = relv.min_dmg
@@ -657,7 +680,7 @@ def fight(koll):
 
                         võlujoogid[dmg_katse][1] -= 1
                         dmg_katse = 0
-                        if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                        if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                             põgenemiskatse = True #et ta ei laseks playeril rünnata
                             break
                         
@@ -672,7 +695,7 @@ def fight(koll):
                         
                         võlujoogid[dmg_katse][1] -= 1
                         dmg_katse = 0
-                        if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                        if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                             põgenemiskatse = True
                             break
                         
@@ -687,7 +710,7 @@ def fight(koll):
                         
                         võlujoogid[dmg_katse][1] -= 1
                         dmg_katse = 0
-                        if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                        if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                             põgenemiskatse = True
                             break
                         
@@ -697,7 +720,7 @@ def fight(koll):
                             print("Jõite võlujooki Ründejook I ja ründate võitluse lõpuni 1 elupunkti võrra tugevamalt.")
                             võlujoogid[dmg_katse][1] -= 1
                             dmg_katse = 0
-                            if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                            if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                                 põgenemiskatse = True
                                 break
                         else:
@@ -709,7 +732,7 @@ def fight(koll):
                             print("Jõite võlujooki Ründejook II ja ründate võitluse lõpuni 2 elupunkti võrra tugevamalt.")
                             võlujoogid[dmg_katse][1] -= 1
                             dmg_katse = 0
-                            if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                            if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                                 põgenemiskatse = True
                                 break
                         else:
@@ -721,7 +744,7 @@ def fight(koll):
                             print("Jõite võlujooki Ründejook III ja ründate võitluse lõpuni 3 elupunkti võrra tugevamalt.")
                             võlujoogid[dmg_katse][1] -= 1
                             dmg_katse = 0
-                            if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                            if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                                 põgenemiskatse = True
                                 break
                         else:
@@ -734,7 +757,7 @@ def fight(koll):
                             võlujoogid[dmg_katse][1] -= 1
                             cooldown += 6
                             dmg_katse = 0
-                            if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                            if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                                 põgenemiskatse = True
                                 break
                         else:
@@ -746,7 +769,7 @@ def fight(koll):
                         print("Jõite võlujooki " + str(dmg_katse))
                         võlujoogid[dmg_katse][1] -= 1
                         dmg_katse = 0
-                        if oskused["Oskus juua võlujooki käiku raiskamata"][1] == False:
+                        if oskused["oskus juua võlujooki käiku raiskamata"][1] == False:
                             põgenemiskatse = True
                             break
                         
@@ -845,7 +868,7 @@ def fight(koll):
                         print(relv.Nimi + " vuhisesid otse läbi " + koll.nimiOm + ", vigastusi põhjustamata.\n" + koll.nimiOm + "l on ikka " + str(koll.hp) + " elupunkti.")
 
             elif dmg_katse <= randint(relv.min_dmg,relv.dmg):
-                if randint(1,100)<=relv.miss and oskused["Oskus õnnetuid lööke ja laske vältida"][1] == False:
+                if randint(1,100)<=relv.miss and oskused["oskus õnnetuid lööke ja laske vältida"][1] == False:
                     if type(relv) == mõõk_inf or type(relv) == vikat_inf:
                         print("Tõeline ebaõnn! Kalevipoja " + relv.nimi + " takerdus mättasse!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
                     elif type(relv) == amb_inf or type(relv) == vibu_inf:
@@ -936,12 +959,12 @@ def fight(koll):
                 koll.hp -= 1
                 print("\nRündejoogist III saadud jõu tõttu kaotas " + koll.nimi + " veel 3 elupunkti. " + koll.nimiOm + "l on nüüd " + str(koll.hp) + " elupunkti.")
             
-        if oskused["Oskus teha vahel teine rünnak"][1] == True and randint(1,100) < 20:
+        if oskused["oskus teha vahel teine rünnak"][1] == True and randint(1,100) < 20:
             print("\nKalveipojal õnnestus teha veel üks rünnak!")
             sleep(0.75)
             if randint(1,100)<=koll.dodge:
                 print("\n... kuid " + koll.nimiOm + "l õnnestus seda vältida. " + koll.nimiOm + "l on endiselt " + str(koll.hp) + " elupunkti.")
-            elif randint(1,100)<=relv.miss and oskused["Oskus õnnetuid lööke ja laske vältida"][1] == False:
+            elif randint(1,100)<=relv.miss and oskused["oskus õnnetuid lööke ja laske vältida"][1] == False:
                 if type(relv) == mõõk_inf or type(relv) == vikat_inf:
                     print("\n... kuid Kalevipoja " + relv.nimi + " takerdus mättasse!\n" + koll.nimiOm+ "l on ikka " + str(koll.hp) + " elupunkti.")
                 elif type(relv) == amb_inf or type(relv) == vibu_inf:
@@ -1093,6 +1116,7 @@ def fight(koll):
             sys.stdout.flush()
             time.sleep(0.8)
         print("\n")
+        
 
         #### Erinevad surmad ####
         if type(koll) == koll_inf:
@@ -1254,7 +1278,16 @@ def fight(koll):
 
         print("\nKalevipeg leidis surnukehalt " + str(koll.auhind) + " kuldmünti.")
         player.gold += koll.auhind
-
+        
+        koll.hp = koll.maxhp
+        koll.alles -= 1
+        if koll.alles == 0:
+            if koll in rotid:
+                rotid.remove(koll)
+            elif koll in nõrgemad_kollid:
+                nõrgemad_kollid.remove(koll)
+            elif koll in tugevamad_kollid:
+                tugevamad_kollid.remove(koll)
 #========================================================MÄNGU SELGROOG============================================================
 
 #### Tiitelleht ####
@@ -1276,9 +1309,9 @@ def tiitellehe_valikud():
     valik = input(">>> ")
     if valik.lower() == "mängi":
         os.system("clear")
-        setup_game()
+        #setup_game()
     elif valik.lower() == "abi":
-        os.system("clear")
+        os.systemo("clear")
         help_menu()
     elif valik.lower() == "quit":
         os.system("clear")
@@ -1358,6 +1391,12 @@ lõunasse = 0
 quicktravel = False
 
 def käsk():
+    if player.mängu_staatus == True:
+        os.system("clear")
+        time.sleep(0.5)
+        animeeri("Said surma, mäng on su jaoks läbi...")
+        animeeri("\nJärgmise korrani! :)")
+        sys.exit()
     global quicktravel
     print("\n" + "()===()===()===()===()===()===()===()")
     for el in "Mis on sinu järgmine tegevus?":
