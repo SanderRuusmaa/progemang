@@ -653,7 +653,7 @@ def fight(koll):
         #### Löögitugevuse, põgenemise või võlujoogi joomise valimine ####        
         dmg_katse = 1000
         while not relv.min_dmg <= dmg_katse <= relv.dmg: 
-            dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\": ")
+            dmg_katse = input("\nSisestage katsetatav löögi tugevus vahemikus " + str(relv.min_dmg) + "..." + str(relv.dmg) + " või \"põgene\" või \"oma võlujoogi nimetus, et seda juua\": ")
             if dmg_katse == "põgene":
                 põgenemiskatse = True
                 if oskused["oskus alati võitlusest põgeneda"][1] == True:
