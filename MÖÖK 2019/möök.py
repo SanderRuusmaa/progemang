@@ -576,9 +576,9 @@ def shop():
 
 
 ###======================================================VÕITLUSE FUNKTSIOON===================================================
-
+relv = rusikad_inf()
 def fight(koll):
-
+    global relv
     oskused["oskus teha vahel teine rünnak"][1] = False
     põgene = False #Kas õnnestus põgeneda
     ründejook1 = False
@@ -1316,7 +1316,7 @@ def tiitellehe_valikud():
         os.system("clear")
         #setup_game()
     elif valik.lower() == "abi":
-        os.systemo("clear")
+        os.system("clear")
         help_menu()
     elif valik.lower() == "quit":
         os.system("clear")
@@ -1713,7 +1713,7 @@ def kolli_rünne():
         fight(boss)
         
 
-display_the_logo()
+#display_the_logo()
    
 tiitelleht()
 tiitellehe_valikud()
